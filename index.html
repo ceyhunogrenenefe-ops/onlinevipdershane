@@ -438,7 +438,11 @@ footer{background:#08122a;color:rgba(255,255,255,.55);padding:52px 5% 26px}
         <div id="cart-body"><div class="cart-empty"><div>🛍️</div><p>Henüz ürün eklemediniz.</p></div></div>
         <button class="checkout-btn" id="co-btn" disabled>Ödemeye Geç →</button>
         <div class="secure-badges">
-          <span class="sbadge">🔒 SSL</span><span class="sbadge">💳 PayTR</span><span class="sbadge">🏦 Garanti</span><span class="sbadge">🏛️ Ziraat</span>
+          <span class="sbadge">🔒 SSL</span>
+          <span class="sbadge">💳 PayTR</span>
+          <span class="sbadge">🏦 Garanti</span>
+          <span class="sbadge">🏛️ Ziraat</span>
+          <span class="sbadge" style="color:var(--green)">✅ KDV Dahil</span>
         </div>
       </div>
     </div>
@@ -502,24 +506,77 @@ footer{background:#08122a;color:rgba(255,255,255,.55);padding:52px 5% 26px}
         <p>Türkiye'nin en büyük yapay zeka destekli online dershanesi. Kişiye özel programlar, canlı dersler, 7/24 destek.</p>
       </div>
       <div class="foot-col"><h4>Programlar</h4><a href="#hizmetler">YKS Hazırlık</a><a href="#hizmetler">LGS Hazırlık</a><a href="#hizmetler">KPSS Hazırlık</a><a href="#hizmetler">Okul Desteği</a></div>
-      <div class="foot-col"><h4>Kurumsal</h4><a href="#neden">Hakkımızda</a><a href="#nasil">Nasıl Çalışır?</a><a href="#yorumlar">Başarı Hikayeleri</a><a href="#iletisim">İletişim</a></div>
+      <div class="foot-col"><h4>Kurumsal</h4><a href="#neden">Neden VIP?</a><a id="link-hakkimizda" style="cursor:pointer">Hakkımızda</a><a href="#nasil">Nasıl Çalışır?</a><a href="#yorumlar">Başarı Hikayeleri</a><a href="#iletisim">İletişim</a></div>
       <div class="foot-col">
         <h4>Yasal</h4>
-        <a id="link-gizlilik">Gizlilik Politikası</a>
-        <a id="link-satis">Mesafeli Satış Sözleşmesi</a>
-        <a id="link-kullanici">Kullanıcı Sözleşmesi</a>
-        <a id="link-cerez">Çerez Politikası</a>
+        <a id="link-iade" style="cursor:pointer">İade &amp; İptal Politikası</a>
+        <a id="link-gizlilik" style="cursor:pointer">Gizlilik Politikası</a>
+        <a id="link-satis" style="cursor:pointer">Mesafeli Satış Sözleşmesi</a>
+        <a id="link-kullanici" style="cursor:pointer">Kullanıcı Sözleşmesi</a>
+        <a id="link-cerez" style="cursor:pointer">Çerez Politikası</a>
         <a href="https://smart-kocluk-ceyhu.vercel.app/login" target="_blank">🔐 Sisteme Giriş</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2025 Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Ltd. Şti. | Vergi No: 6430852095 Batman VD</span>
+      <span>© 2025 Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Ltd. Şti. | Vergi No: 6430852095 Batman VD | Tüm fiyatlar KDV dahildir.</span>
       <div class="social-links">
         <a class="sl" href="#">📷</a><a class="sl" href="#">▶</a><a class="sl" href="#">💬</a><a class="sl" href="#">♪</a>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- İADE POLİTİKASI MODAL -->
+<div id="modal-iade" class="dmodal-overlay"><div class="dmodal">
+  <div class="dmodal-hero"><button class="dmodal-close" id="close-iade">✕</button><div class="dtag">Yasal Belge</div><h2>İade &amp; İptal Politikası</h2><p>Son güncelleme: 16.05.2025 — Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Ltd. Şti.</p></div>
+  <div class="dmodal-body">
+    <div class="dsec"><h4>1. Cayma Hakkı</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği uyarınca, hizmet başlamadan önce <strong>14 (on dört) gün</strong> içinde herhangi bir gerekçe göstermeksizin cayma hakkınızı kullanabilirsiniz.<br><br>Cayma bildiriminizi aşağıdaki kanallardan yapabilirsiniz:<br>• E-posta: info@onlinevipdershane.com<br>• Telefon: 0850 303 40 14<br>• Adres: Gültepe Mah. 5400 Sk. Beyaz Kent Sitesi A Blok No:8/26 Merkez/Batman</p></div>
+    <div class="dsec"><h4>2. Cayma Hakkının İstisnaları</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Aşağıdaki durumlarda cayma hakkı kullanılamaz:<br><br>• <strong>Hizmetin ifasına başlanmış olması:</strong> Canlı derslere katılım sağlandıktan sonra cayma hakkı sona erer.<br>• <strong>Dijital içerik erişimi:</strong> Ders kayıtlarına, soru bankasına veya dijital materyallere erişim sağlandıktan sonra cayma hakkı kullanılamaz.<br>• <strong>Öğrencinin talebiyle başlayan hizmetler:</strong> Öğrenci talebi üzerine erken başlatılan hizmetlerde cayma hakkı sona erer.</p></div>
+    <div class="dsec"><h4>3. İade Süreci</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Cayma hakkının geçerli olduğu durumlarda:<br><br>• Cayma bildiriminiz bize ulaştıktan sonra <strong>14 gün içinde</strong> ödemeniz iade edilir.<br>• İade, ödemenin yapıldığı yöntemle (Garanti BBVA, Ziraat Bankası veya PayTR) gerçekleştirilir.<br>• Banka işlem süreleri nedeniyle kartınıza yansıma 3-10 iş günü sürebilir.</p></div>
+    <div class="dsec"><h4>4. Kısmi İade</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Hizmet kısmen kullanıldıysa (örneğin dönemin bir kısmı tamamlandıysa), kullanılan hizmet bedeli düşülerek kalan tutar oransal olarak iade edilir. Hesaplama şirketimiz tarafından yapılır ve tarafınıza yazılı olarak bildirilir.</p></div>
+    <div class="dsec"><h4>5. İptal Koşulları</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">• Hizmet başlamadan önce yapılan iptallerde tam iade yapılır.<br>• Hizmet başladıktan sonra yapılan iptallerde yukarıdaki kısmi iade koşulları uygulanır.<br>• Teknik arıza veya şirketimizden kaynaklanan hizmet kesintilerinde telafi dersi veya oransal iade yapılır.</p></div>
+    <div class="dsec"><h4>6. Uyuşmazlık Çözümü</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">İade talebinizin karşılanmaması durumunda Batman Tüketici Hakem Heyeti'ne veya Tüketici Mahkemesi'ne başvurabilirsiniz. Ayrıca e-Devlet üzerinden Tüketici Şikayet Portalı'nı kullanabilirsiniz.</p></div>
+  </div>
+  <div class="dmodal-footer"><button class="dbtn-red" id="close-iade-btn">Anladım, Kapat</button></div>
+</div></div>
+
+<!-- HAKKIMIZDA MODAL -->
+<div id="modal-hakkimizda" class="dmodal-overlay"><div class="dmodal">
+  <div class="dmodal-hero"><button class="dmodal-close" id="close-hakkimizda">✕</button><div class="dtag">Kurumsal</div><h2>Hakkımızda</h2><p>Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Ltd. Şti.</p></div>
+  <div class="dmodal-body">
+    <div class="dsec"><h4>Biz Kimiz?</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Online VIP Dershane, 2025 yılında Batman'da kurulan, Türkiye genelinde hizmet veren yenilikçi bir online eğitim platformudur. Şirketimiz, geleneksel dershane modelini dijital ortama taşıyarak öğrencilere kişiye özel, esnek ve yüksek kaliteli eğitim sunmaktadır.<br><br>Amacımız; coğrafi engelleri ortadan kaldırarak Türkiye'nin her köşesindeki öğrenciye en iyi eğitim hizmetini ulaştırmaktır.</p></div>
+    <div class="dsec"><h4>Misyonumuz</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Kalabalık sınıflarda kaybolmak yerine, her öğrencinin bireysel başarısını ön plana alan, yapay zekâ destekli, veri odaklı ve insan merkezli bir eğitim anlayışı sunmak.</p></div>
+    <div class="dsec"><h4>Vizyonumuz</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Türkiye'nin en büyük yapay zekâ destekli online dershanesi olarak, eğitimde fırsat eşitliğini sağlamak ve her öğrencinin hedefine ulaşmasına katkı sunmak.</p></div>
+    <div class="dsec"><h4>Neden Biz?</h4><div class="feat-list"><div class="feat-item">Maksimum 10 kişilik VIP sınıflarla birebir ilgi</div><div class="feat-item">Alanında uzman ve deneyimli öğretmen kadrosu</div><div class="feat-item">600.000+ dijital soru havuzu ve 55 yayınevi erişimi</div><div class="feat-item">7/24 soru çözüm desteği ve yapay zekâ analizi</div><div class="feat-item">Adrese teslim kaynaklar ve hibrit eğitim modeli</div><div class="feat-item">Türkiye'nin her yerinden katılım imkânı</div></div></div>
+    <div class="dsec"><h4>Şirket Bilgileri</h4><p style="font-size:13px;color:var(--muted);line-height:1.8"><strong>Ticaret Ünvanı:</strong> Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Limited Şirketi<br><strong>Kuruluş:</strong> 16.05.2025<br><strong>Vergi Dairesi:</strong> Batman<br><strong>Vergi No:</strong> 6430852095<br><strong>Adres:</strong> Gültepe Mah. 5400 Sk. Beyaz Kent Sitesi A Blok No:8 A İç Kapı No:26 Merkez/Batman<br><strong>Tel:</strong> 0850 303 40 14<br><strong>E-posta:</strong> info@onlinevipdershane.com<br><strong>Faaliyet Kodu:</strong> 856900 — Eğitimi Destekleyici Faaliyetler</p></div>
+  </div>
+  <div class="dmodal-footer"><button class="dbtn-red" id="close-hakkimizda-btn">Kapat</button></div>
+</div></div>
+
+<!-- İADE POLİTİKASI MODAL -->
+<div id="modal-iade" class="dmodal-overlay"><div class="dmodal">
+  <div class="dmodal-hero"><button class="dmodal-close" id="close-iade">✕</button><div class="dtag">Yasal Belge</div><h2>İade &amp; İptal Politikası</h2><p>Son güncelleme: 16.05.2025 — Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Ltd. Şti.</p></div>
+  <div class="dmodal-body">
+    <div class="dsec"><h4>1. Cayma Hakkı</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">6502 sayılı Tüketicinin Korunması Hakkında Kanun uyarınca, hizmet başlamadan önce <strong>14 (on dört) gün</strong> içinde cayma hakkınızı kullanabilirsiniz.<br><br>Cayma bildirimi için:<br>• E-posta: info@onlinevipdershane.com<br>• Telefon: 0850 303 40 14</p></div>
+    <div class="dsec"><h4>2. Cayma Hakkının İstisnaları</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">• Canlı derslere katılım sağlandıktan sonra cayma hakkı sona erer.<br>• Ders kayıtlarına veya dijital materyallere erişim sağlandıktan sonra cayma hakkı kullanılamaz.</p></div>
+    <div class="dsec"><h4>3. İade Süreci</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Cayma hakkının geçerli olduğu durumlarda bildirimden itibaren <strong>14 gün içinde</strong> ödeme iade edilir. İade, ödemenin yapıldığı yöntemle gerçekleştirilir.</p></div>
+    <div class="dsec"><h4>4. Kısmi İade</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Hizmet kısmen kullanıldıysa, kullanılan hizmet bedeli düşülerek kalan tutar oransal olarak iade edilir.</p></div>
+    <div class="dsec"><h4>5. Uyuşmazlık Çözümü</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Batman Tüketici Hakem Heyeti veya e-Devlet üzerinden Tüketici Şikayet Portalı'na başvurabilirsiniz.</p></div>
+  </div>
+  <div class="dmodal-footer"><button class="dbtn-red" id="close-iade-btn">Anladım, Kapat</button></div>
+</div></div>
+
+<!-- HAKKIMIZDA MODAL -->
+<div id="modal-hakkimizda" class="dmodal-overlay"><div class="dmodal">
+  <div class="dmodal-hero"><button class="dmodal-close" id="close-hakkimizda">✕</button><div class="dtag">Kurumsal</div><h2>Hakkımızda</h2><p>Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Ltd. Şti.</p></div>
+  <div class="dmodal-body">
+    <div class="dsec"><h4>Biz Kimiz?</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Online VIP Dershane, 2025 yılında Batman'da kurulan, Türkiye genelinde hizmet veren yenilikçi bir online eğitim platformudur. Geleneksel dershane modelini dijital ortama taşıyarak öğrencilere kişiye özel, esnek ve yüksek kaliteli eğitim sunmaktadır.</p></div>
+    <div class="dsec"><h4>Misyonumuz</h4><p style="font-size:13px;color:var(--muted);line-height:1.8">Kalabalık sınıflarda kaybolmak yerine, her öğrencinin bireysel başarısını ön plana alan, yapay zekâ destekli ve insan merkezli bir eğitim anlayışı sunmak.</p></div>
+    <div class="dsec"><h4>Neden Biz?</h4><div class="feat-list"><div class="feat-item">Maksimum 10 kişilik VIP sınıflarla birebir ilgi</div><div class="feat-item">Alanında uzman ve deneyimli öğretmen kadrosu</div><div class="feat-item">600.000+ dijital soru havuzu ve 55 yayınevi erişimi</div><div class="feat-item">7/24 soru çözüm desteği ve yapay zekâ analizi</div><div class="feat-item">Türkiye'nin her yerinden katılım imkânı</div></div></div>
+    <div class="dsec"><h4>Şirket Bilgileri</h4><p style="font-size:13px;color:var(--muted);line-height:1.8"><strong>Ticaret Ünvanı:</strong> Online VIP Dershanecilik Eğitim ve Danışmanlık Hizmetleri Ltd. Şti.<br><strong>Kuruluş:</strong> 16.05.2025<br><strong>Vergi No:</strong> 6430852095 Batman VD<br><strong>Adres:</strong> Gültepe Mah. 5400 Sk. Beyaz Kent Sitesi A Blok No:8/26 Merkez/Batman<br><strong>Tel:</strong> 0850 303 40 14<br><strong>E-posta:</strong> info@onlinevipdershane.com</p></div>
+  </div>
+  <div class="dmodal-footer"><button class="dbtn-red" id="close-hakkimizda-btn">Kapat</button></div>
+</div></div>
 
 <!-- ÇEREZ BANNER -->
 <div class="cerez-banner" id="cerez-banner">
@@ -824,7 +881,13 @@ function renderCheckout(){
       +'<div class="odeme-kart-item" data-yontem="ziraat"><div style="font-size:22px;margin-bottom:5px">🏛️</div><div style="font-size:11px;font-weight:700">Ziraat Bankası</div><div style="font-size:10px;color:var(--muted)">3D Secure</div></div>'
       +'<div class="odeme-kart-item" data-yontem="paytr"><div style="font-size:22px;margin-bottom:5px">💳</div><div style="font-size:11px;font-weight:700">PayTR</div><div style="font-size:10px;color:var(--muted)">Tüm Kartlar</div></div>'
       +'</div>'
-      +'<div style="background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.2);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--green);margin-bottom:14px">🔒 Ödemeniz 256-bit SSL ile şifrelenerek güvenle iletilmektedir.</div>'
+      +'<div style="background:rgba(22,163,74,.08);border:1px solid rgba(22,163,74,.2);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--green);margin-bottom:14px">🔒 Ödemeniz 256-bit SSL ile şifrelenmektedir. Tüm fiyatlar KDV dahildir.</div>'
+      +'<div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;flex-wrap:wrap">'
+      +'<img src="https://www.paytr.com/img/logo.png" alt="PayTR Güvenli Ödeme" style="height:28px;opacity:.8" onerror="this.style.display=\'none\'">'
+      +'<span style="font-size:10px;color:var(--muted);background:var(--bg);padding:4px 10px;border-radius:20px;border:1px solid var(--border)">🔒 256-bit SSL</span>'
+      +'<span style="font-size:10px;color:var(--muted);background:var(--bg);padding:4px 10px;border-radius:20px;border:1px solid var(--border)">✅ 3D Secure</span>'
+      +'<span style="font-size:10px;color:var(--muted);background:var(--bg);padding:4px 10px;border-radius:20px;border:1px solid var(--border)">💳 KDV Dahil</span>'
+      +'</div>'
       +'<button class="mbtn red" id="btn-odeme-tamam">🔒 Garanti BBVA ile Güvenli Öde — '+fmt(total)+'</button>'
       +'<button class="mbtn outline" id="btn-back3">← Geri</button>';
     document.getElementById('btn-back3').addEventListener('click',function(){checkStep=2;renderCheckout();});
@@ -905,6 +968,43 @@ tick();setInterval(tick,1000);
 renderCourses('hepsi');
 renderProducts('donem');
 renderCart();
+
+// YASAL LİNKLER — en sona, her şey yüklendikten sonra
+setTimeout(function(){
+  var linkler = {
+    'link-gizlilik':   'modal-gizlilik',
+    'link-satis':      'modal-satis',
+    'link-kullanici':  'modal-kullanici',
+    'link-cerez':      'modal-cerez',
+    'link-iade':       'modal-iade',
+    'link-hakkimizda': 'modal-hakkimizda'
+  };
+  Object.keys(linkler).forEach(function(lid){
+    var el = document.getElementById(lid);
+    var mid = linkler[lid];
+    if(el){
+      el.onclick = function(e){
+        e.preventDefault();
+        var modal = document.getElementById(mid);
+        if(modal) modal.classList.add('open');
+      };
+    }
+  });
+
+  // Modal kapat butonları
+  ['gizlilik','satis','kullanici','cerez','iade','hakkimizda',
+   'ilkokul','ortaokul','lgs','yks','tyt10','tyt11','lgs-yaz','9den10a','kitap'].forEach(function(k){
+    var c1 = document.getElementById('close-'+k);
+    var c2 = document.getElementById('close-'+k+'-btn');
+    var c3 = document.getElementById('close-'+k+'-kayit');
+    var ov = document.getElementById('modal-'+k);
+    function kapat(){ if(ov) ov.classList.remove('open'); }
+    if(c1) c1.onclick = kapat;
+    if(c2) c2.onclick = kapat;
+    if(c3) c3.onclick = function(){ kapat(); document.getElementById('magaza').scrollIntoView({behavior:'smooth'}); };
+    if(ov) ov.onclick = function(e){ if(e.target===ov) kapat(); };
+  });
+}, 100);
 </script>
 </body>
 </html>
