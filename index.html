@@ -2416,7 +2416,7 @@ footer::before {
       <button class="bm-close" onclick="document.getElementById('bmodal-lgs').classList.remove('open');history.pushState(null,null,' ')">✕</button>
       <div style="position:absolute;top:16px;right:56px;display:flex;gap:8px;">
         <button onclick="copyBlogLink('blog-lgs-hazirlik')" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">🔗 Linki Kopyala</button>
-        <a href="https://wa.me/?text=Online%20VIP%20Dershane%20Blog%3A%20LGS%27de%20Y%C3%BCksek%20Net%20%C4%B0%C3%A7in%205%20Alt%C4%B1n%20Kural%20%E2%86%92%20onlinevipdershane.com%2F%23blog-lgs-hazirlik" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
+        <a href="#" onclick="var u=encodeURIComponent('Online VIP Dershane Blog: LGS\'de Yüksek Net İçin 5 Altın Kural → '+window.location.origin+window.location.pathname+'#blog-lgs-hazirlik');window.open('https://wa.me/?text='+u,'_blank');return false;" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
       </div>
       <div class="bm-cat">🏆 LGS Hazırlık</div>
       <h2 itemprop="headline">LGS'de Yüksek Net İçin 5 Altın Kural:<br>Hedef Liseye Nasıl Ulaşırsın?</h2>
@@ -2513,7 +2513,7 @@ footer::before {
       <button class="bm-close" onclick="document.getElementById('bmodal-online').classList.remove('open');history.pushState(null,null,' ')">✕</button>
       <div style="position:absolute;top:16px;right:56px;display:flex;gap:8px;">
         <button onclick="copyBlogLink('blog-online-egitim')" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">🔗 Linki Kopyala</button>
-        <a href="https://wa.me/?text=Online%20VIP%20Dershane%20Blog%3A%20Online%20E%C4%9Fitim%20Neden%20Daha%20Etkili%3F%20%E2%86%92%20onlinevipdershane.com%2F%23blog-online-egitim" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
+        <a href="#" onclick="var u=encodeURIComponent('Online VIP Dershane Blog: Online Eğitim Neden Daha Etkili? → '+window.location.origin+window.location.pathname+'#blog-online-egitim');window.open('https://wa.me/?text='+u,'_blank');return false;" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
       </div>
       <div class="bm-cat" style="background:rgba(37,84,212,.2);border-color:rgba(58,111,245,.35);color:#a5c0ff;">💻 Online Eğitim</div>
       <h2 itemprop="headline">Online Eğitim Neden Daha Etkili?<br>VIP Sistemin Klasik Dershaneden 7 Farkı</h2>
@@ -3091,20 +3091,30 @@ window.addEventListener('hashchange', openFromHash);
 
 // ─── BLOG LİNK KOPYALA ───────────────────────────────────────────
 function copyBlogLink(slug) {
-  var url = 'https://onlinevipdershane.com/#' + slug;
+  // Hangi domain'de olursa olsun o domain'i kullan
+  var url = window.location.origin + window.location.pathname + '#' + slug;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(url).then(function() {
       showCopyToast(url);
+    }).catch(function() {
+      fallbackCopy(url);
     });
   } else {
-    var el = document.createElement('textarea');
-    el.value = url;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    showCopyToast(url);
+    fallbackCopy(url);
   }
+}
+
+function fallbackCopy(url) {
+  var el = document.createElement('textarea');
+  el.value = url;
+  el.style.position = 'fixed';
+  el.style.opacity = '0';
+  document.body.appendChild(el);
+  el.focus();
+  el.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(el);
+  showCopyToast(url);
 }
 
 function showCopyToast(url) {
