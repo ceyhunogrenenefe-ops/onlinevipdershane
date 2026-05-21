@@ -309,7 +309,7 @@
 <meta property="og:title" content="Online VIP Dershane | LGS YKS KPSS Hazırlık — Türkiye'nin En Büyük YZ Destekli Online Dershanesi">
 <meta property="og:description" content="LGS, YKS TYT-AYT, KPSS için maksimum 10 kişilik VIP gruplar. 7/24 soru desteği, haftalık 1-1 koçluk, canlı dersler. Türkiye'nin en büyük yapay zeka destekli online dershanesi.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.onlinevipdershane.com">
+<meta property="og:url" content="https://onlinevipdershane.vercel.app">
 <link rel="canonical" href="https://www.onlinevipdershane.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -822,13 +822,21 @@ section { padding:96px 5%; }
 .new-price { font-size:20px; font-weight:800; color:var(--navy); font-family:'Bricolage Grotesque',sans-serif; }
 .disc-pill { background:var(--accent); color:#fff; font-size:9px; font-weight:700; padding:2px 8px; border-radius:100px; margin-top:3px; display:inline-block; }
 .add-btn {
-  background:var(--navy); color:#fff;
-  border:none; border-radius:8px; padding:7px 14px;
-  font-size:11.5px; font-weight:700; cursor:pointer;
-  margin-top:8px; transition:.2s; white-space:nowrap;
+  background: linear-gradient(135deg, var(--accent), #c8191f);
+  color:#fff;
+  border:none; border-radius:8px; padding:8px 16px;
+  font-size:12px; font-weight:700; cursor:pointer;
+  margin-top:8px; transition:.25s; white-space:nowrap;
+  box-shadow: 0 3px 10px rgba(232,35,42,.25);
 }
-.add-btn:hover { background:var(--blue); }
-.add-btn.added { background:var(--green); }
+.add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(232,35,42,.35);
+}
+.add-btn.added {
+  background: linear-gradient(135deg, var(--green), #059669);
+  box-shadow: 0 4px 12px rgba(16,185,129,.3);
+}
 .bestseller {
   position:absolute; top:-1px; right:18px;
   background:var(--accent); color:#fff;
@@ -1140,12 +1148,12 @@ footer::before {
 /* Büyük ekranda slider tam görünsün */
 @media(min-width:961px){
   .slider-wrap {
-    aspect-ratio: 12/5 !important;
-    max-height: 500px !important;
+    aspect-ratio: 16/6 !important;
+    max-height: 450px !important;
   }
   .slide img {
     object-fit: cover !important;
-    object-position: center top !important;
+    object-position: center center !important;
     width: 100% !important;
     height: 100% !important;
   }
@@ -1153,8 +1161,8 @@ footer::before {
 .slider-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 12/5;
-  max-height: 500px;
+  aspect-ratio: 16/6;
+  max-height: 450px;
   overflow: hidden;
 }
 .slider-track {
@@ -1720,6 +1728,68 @@ footer::before {
 .bm-btn-wa:hover { background:rgba(255,255,255,.18); }
 
 </style>
+<script>
+// ═══════════════════════════════════════════════════
+// PAYLAŞIM SİSTEMİ — Blog & Paket Linkleri
+// ═══════════════════════════════════════════════════
+var SITE_URL = 'https://onlinevipdershane.vercel.app';
+
+function copyLink(url) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url)
+      .then(function() { showToast(); })
+      .catch(function() { legacyCopy(url); });
+  } else {
+    legacyCopy(url);
+  }
+}
+
+function legacyCopy(url) {
+  var el = document.createElement('textarea');
+  el.value = url;
+  el.setAttribute('readonly','');
+  el.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
+  document.body.appendChild(el);
+  el.select();
+  el.setSelectionRange(0, 99999);
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(el);
+  if (ok) { showToast(); } else { prompt('Linki kopyalayın:', url); }
+}
+
+function copyBlogLink(slug) {
+  copyLink(SITE_URL + '/#' + slug);
+}
+
+function copyPaketLink(slug) {
+  copyLink(SITE_URL + '/#' + slug);
+}
+
+function showToast() {
+  var t = document.getElementById('copy-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'copy-toast';
+    t.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(16px);background:linear-gradient(135deg,#1a3fad,#2554d4);color:#fff;padding:11px 22px;border-radius:12px;font-size:13px;font-weight:600;z-index:99999;box-shadow:0 8px 28px rgba(26,63,173,.4);display:none;align-items:center;gap:8px;font-family:sans-serif;white-space:nowrap;transition:opacity .25s,transform .25s;opacity:0;pointer-events:none;';
+    document.body.appendChild(t);
+  }
+  t.textContent = '✅ Link kopyalandı!';
+  t.style.display = 'flex';
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      t.style.opacity = '1';
+      t.style.transform = 'translateX(-50%) translateY(0)';
+    });
+  });
+  clearTimeout(t._timer);
+  t._timer = setTimeout(function() {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(16px)';
+    setTimeout(function() { t.style.display = 'none'; }, 300);
+  }, 2500);
+}
+</script>
 </head>
 <body>
 
@@ -1740,7 +1810,7 @@ footer::before {
     <div class="nav-right">
       <a href="https://smart-kocluk-ceyhu.vercel.app/login" target="_blank" class="nav-login">🔐 <span class="login-text">Sisteme Giriş</span></a>
       <button class="nav-cta" onclick="document.getElementById('magaza').scrollIntoView({behavior:'smooth'})"><span class="cta-text">Hemen Kayıt Ol</span> →</button>
-      <button class="cart-btn" onclick="document.getElementById('magaza').scrollIntoView({behavior:'smooth'})">🛒<span class="cart-count" id="cart-count">0</span></button>
+      <button class="cart-btn" onclick="document.getElementById('magaza').scrollIntoView({behavior:'smooth'})" title="Seçilen Programlar">📋<span class="cart-count" id="cart-count">0</span></button>
     </div>
     <button class="hamburger" aria-label="Menü" onclick="toggleMobile()">
       <span></span><span></span><span></span>
@@ -1912,6 +1982,7 @@ footer::before {
       <button class="srv-filter" data-cat="kpss">KPSS</button>
       <button class="srv-filter" data-cat="kamp">Yaz Kampı</button>
       <button class="srv-filter" data-cat="atolye">Atölye</button>
+      <button class="srv-filter" data-cat="yazili">Yazılıya Hazırlık</button>
     </div>
     <div class="srv-grid" id="srv-grid"></div>
   </div>
@@ -1937,13 +2008,14 @@ footer::before {
           <button class="tab active" id="tab-donem">Dönem Programları</button>
           <button class="tab" id="tab-yaz">Yaz Okulu &amp; Kamp</button>
           <button class="tab" id="tab-ek">Ek Programlar</button>
+          <button class="tab" id="tab-yazili">✍️ Yazılıya Hazırlık</button>
         </div>
         <div class="products" id="products"></div>
       </div>
       <div class="cart-panel">
-        <h2>🛒 Sepetim <span style="font-size:12px;color:var(--muted);font-weight:400" id="cart-sub"></span></h2>
-        <div id="cart-body"><div class="cart-empty"><div>🛍️</div><p>Henüz ürün eklemediniz.</p></div></div>
-        <button class="checkout-btn" id="co-btn" disabled>Ödemeye Geç →</button>
+        <h2>📋 Seçilen Programlar <span style="font-size:12px;color:var(--muted);font-weight:400" id="cart-sub"></span></h2>
+        <div id="cart-body"><div class="cart-empty"><div>📋</div><p>Henüz program seçmediniz.</p></div></div>
+        <button class="checkout-btn" id="co-btn" disabled>Eğitime Kayıt Ol →</button>
         <div class="secure-badges">
           <span class="sbadge">🔒 SSL</span>
           <span class="sbadge">💳 PayTR</span>
@@ -2291,31 +2363,49 @@ footer::before {
 
 <!-- Service Detail Modals -->
 <div id="modal-ilkokul" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-ilkokul">✕</button><div class="dtag">3–4. Sınıf · İlkokul Destek Programı</div><h2>Online VIP Dershane 3–4. Sınıf Okula Destek Programı</h2><p>MEB standartları ve 21. Yüzyıl Yetkinlikleri göz önünde bulundurularak hazırlandı. Artık ders hanenizde!</p></div><div class="dmodal-body"><div class="dsec"><h4>Haftalık Ders Programı</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">4</div><div class="dders">Saat Sınıf Dersi</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat İngilizce</div></div><div class="ders-card"><div class="dsaat">1</div><div class="dders">Saat Rehberlik</div></div></div></div><div class="dsec"><h4>Programın Temel Özellikleri</h4><div class="feat-list"><div class="feat-item">Hazır bulunuşluk düzeyine göre uzman öğretmenler eşliğinde öğrenci aktif model</div><div class="feat-item">Ders esnasında anlamadığını anında öğretmenine sorabilir</div><div class="feat-item">WhatsApp ödev grubundan gün boyu soru sorabilir, çözüm videosu alabilir</div><div class="feat-item">Kaynak kitaplarla dersi hem ekrandan hem fiziksel kitaptan takip eder</div><div class="feat-item">Türkiye'nin her yerinden katılabilir</div></div></div><div class="dsec"><h4>Sınav &amp; Takip Sistemi</h4><div class="sistem-grid"><div class="sistem-item"><div class="si-icon">🗒️</div><h5>Haftalık Denemeler</h5><p>Gözetmen öğretmeni eşliğinde haftalık online deneme sınavları.</p></div><div class="sistem-item"><div class="si-icon">🏆</div><h5>Türkiye Geneli Sıralama</h5><p>On binlerce öğrenci arasında anlık sıralama görüntüleme.</p></div><div class="sistem-item"><div class="si-icon">🤖</div><h5>YZ Destekli Soru Bankası</h5><p>Yapay zekâ destekli sınav analiziyle kişiye özel soru bankaları.</p></div><div class="sistem-item"><div class="si-icon">📱</div><h5>Veli Takip Paneli</h5><p>SMS uyarı sistemi ve veli panelinden tüm gelişmelerden haberdar olun.</p></div></div></div><div class="dsec"><h4>Resmi Kaynaklar</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank">🔗 Talim ve Terbiye Kurulu</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Platformu</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank">🔗 MEB Müfredat Portalı</a></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">Programımız MEB müfredatı, Talim ve Terbiye Kurulu kararları ve 21. Yüzyıl Yetkinlikleri çerçevesine uygun olarak hazırlanmıştır. SEO anahtar: online ilkokul dershane, 3. sınıf online ders, 4. sınıf online dershane, ilkokul özel ders.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank" rel="noopener">🔗 Talim ve Terbiye Kurulu — ttkb.meb.gov.tr</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Müfredat Portalı — mufredat.meb.gov.tr</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a><a class="kaynak-link" href="https://ogm.meb.gov.tr/" target="_blank" rel="noopener">🔗 Öğretmen Yetiştirme Genel Müdürlüğü — ogm.meb.gov.tr</a></div></div>
-<div class="uyari-box">🏠 ARTIK DERS HANENİZDE! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-ilkokul-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%203-4.%20S%C4%B1n%C4%B1f%20%C4%B0lkokul%20Destek%20Program%C4%B1%20hakk%C4%B1nda%20detayl%C4%B1%20bilgi%20almak%20istiyorum.%20Fiyat%2C%20ders%20saatleri%20ve%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">🏠 ARTIK DERS HANENİZDE! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-ilkokul-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%203-4.%20S%C4%B1n%C4%B1f%20%C4%B0lkokul%20Destek%20Program%C4%B1%20hakk%C4%B1nda%20detayl%C4%B1%20bilgi%20almak%20istiyorum.%20Fiyat%2C%20ders%20saatleri%20ve%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('ilkokul')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-ortaokul" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-ortaokul">✕</button><div class="dtag">5–6–7. Sınıf · Ortaokul VIP Paketi · 2026–2027</div><h2>Yeni Nesil Dershanecilik: 5–6–7. Sınıf VIP Sistem</h2><p>Başka hiçbir ek desteğe ihtiyaç bırakmayan eksiksiz bir sistem. "Olduğunuz Yerden, Olmak İstediğiniz Yere: Online VIP Dershane."</p></div><div class="dmodal-body"><div class="dsec"><h4>Haftalık Ders Programı — Toplam 9 Saat</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Matematik</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Türkçe</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat İngilizce</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Fen Bilimleri</div></div><div class="ders-card"><div class="dsaat">1</div><div class="dders">Saat Sosyal Bilgiler</div></div></div><p style="font-size:12px;color:var(--muted);margin-top:8px">+ Günlük 2 saat etüt &amp; soru odası desteği</p></div><div class="dsec"><h4>VIP Paket İçeriği</h4><div class="sistem-grid"><div class="sistem-item"><div class="si-icon">🎥</div><h5>Canlı VIP Sınıflar</h5><p>8 kişilik sınıflarda haftalık 9 saat canlı ders. Otomatik kayıt ve kaynak kitap desteği.</p></div><div class="sistem-item"><div class="si-icon">✍️</div><h5>VIP Etüt &amp; Soru Odası</h5><p>Her gün 2 saat öğretmen eşliğinde etüt. Soru Odası'nda birebir uzman desteği.</p></div><div class="sistem-item"><div class="si-icon">📦</div><h5>Kurumsal Denemeler</h5><p>Her ay adrese teslim denemeler. Gözetmen eşliğinde sınav ve mobil hata kitapçığı.</p></div><div class="sistem-item"><div class="si-icon">💻</div><h5>Dev Dijital Kütüphane</h5><p>55 yayınevi, 1 milyon soru havuzu ve sınırsız Z-kitap erişimi.</p></div></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">5–6–7. sınıf VIP programımız MEB müfredatı, Maarif Model çerçevesi ve güncel ÖDSGM kararları doğrultusunda hazırlanmıştır. SEO anahtar: ortaokul online dershane, 5. sınıf dershane, 6. sınıf dershane, 7. sınıf dershane.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank" rel="noopener">🔗 Talim ve Terbiye Kurulu — ttkb.meb.gov.tr</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Müfredat Portalı — mufredat.meb.gov.tr</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank" rel="noopener">🔗 Ölçme, Değerlendirme ve Sınav Hizmetleri Genel Müdürlüğü</a></div></div>
-<div class="uyari-box">🚀 2026–2027 Kayıtları Başladı! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-ortaokul-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%205-6-7.%20S%C4%B1n%C4%B1f%20VIP%20Paketi%20hakk%C4%B1nda%20detayl%C4%B1%20bilgi%20almak%20istiyorum.%20Fiyat%2C%20ders%20saatleri%20ve%202026-2027%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">🚀 2026–2027 Kayıtları Başladı! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-ortaokul-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%205-6-7.%20S%C4%B1n%C4%B1f%20VIP%20Paketi%20hakk%C4%B1nda%20detayl%C4%B1%20bilgi%20almak%20istiyorum.%20Fiyat%2C%20ders%20saatleri%20ve%202026-2027%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('ortaokul')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-lgs" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-lgs">✕</button><div class="dtag">LGS Hazırlık · 8. Sınıf · Maarif Model Uyumlu</div><h2>Online VIP Dershane LGS Hazırlık Programı</h2><p>21. yüzyılın en avantajlı eğitim imkânlarını merkeze alarak hazırlanan LGS programı.</p></div><div class="dmodal-body"><div class="dsec"><h4>Programın Temel Özellikleri</h4><div class="feat-list"><div class="feat-item">Hazır bulunuşluk düzeyine göre uzman öğretmenler eşliğinde öğrenci aktif model</div><div class="feat-item">WhatsApp ödev grubundan gün boyu soru sorabilir, çözüm videosu alabilir</div><div class="feat-item">Haftalık online deneme sınavları ve Türkiye geneli sıralama</div><div class="feat-item">YZ destekli sınav analiziyle kişiye özel soru bankaları</div><div class="feat-item">Analizli karne, birleştirilmiş karne ve hata karnesine anında erişim</div><div class="feat-item">Psikolojik danışmanlık, sınav kaygısı yönetimi ve motivasyon seminerleri</div></div></div><div class="dsec"><h4>Sınav &amp; Takip Sistemi</h4><div class="sistem-grid"><div class="sistem-item"><div class="si-icon">🗒️</div><h5>Haftalık Denemeler</h5><p>Gözetmen öğretmeni eşliğinde haftalık deneme sınavları.</p></div><div class="sistem-item"><div class="si-icon">🏆</div><h5>Türkiye Geneli Sıralama</h5><p>On binlerce öğrenci arasında anlık sıralama görüntüleme.</p></div><div class="sistem-item"><div class="si-icon">📊</div><h5>Veli Takip Paneli</h5><p>SMS uyarısı, ders programı ve gelişim takibi.</p></div><div class="sistem-item"><div class="si-icon">🤖</div><h5>YZ Soru Bankası</h5><p>Kişiye özel yapay zekâ destekli soru bankaları.</p></div></div></div><div class="dsec"><h4>Resmi Kaynaklar</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank">🔗 MEB Ölçme ve Değerlendirme</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank">🔗 Talim ve Terbiye Kurulu</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Platformu</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank">🔗 MEB Müfredat Portalı</a></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">LGS hazırlık programımız ÖDSGM sınav kılavuzu, Maarif Model müfredatı ve Talim Terbiye Kurulu kararları temel alınarak hazırlanmaktadır. SEO anahtar: LGS hazırlık, 8. sınıf online dershane, LGS online kurs, Liselere Geçiş Sınavı hazırlık.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Ölçme, Değerlendirme ve Sınav Hizmetleri Genel Müdürlüğü</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank" rel="noopener">🔗 Talim ve Terbiye Kurulu — ttkb.meb.gov.tr</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Müfredat Portalı — mufredat.meb.gov.tr</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a></div></div>
-<div class="uyari-box">🏠 ARTIK DERS HANENİZDE! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-lgs-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%20LGS%20Haz%C4%B1rl%C4%B1k%20Program%C4%B1%20hakk%C4%B1nda%20detayl%C4%B1%20bilgi%20almak%20istiyorum.%208.%20s%C4%B1n%C4%B1f%20program%20i%C3%A7eri%C4%9Fi%2C%20fiyat%20ve%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">🏠 ARTIK DERS HANENİZDE! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-lgs-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%20LGS%20Haz%C4%B1rl%C4%B1k%20Program%C4%B1%20hakk%C4%B1nda%20detayl%C4%B1%20bilgi%20almak%20istiyorum.%208.%20s%C4%B1n%C4%B1f%20program%20i%C3%A7eri%C4%9Fi%2C%20fiyat%20ve%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('lgs')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-yks" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-yks">✕</button><div class="dtag">YKS Hazırlık · TYT–AYT · 2026–2027</div><h2>YKS 2026–2027 Online Eğitim Paketi ile Netlerini Yükselt!</h2><p>Doğru sistem + düzenli takip = yüksek net.</p></div><div class="dmodal-body"><div class="dsec"><h4>Haftalık Ders Programı — Toplam 17 Saat</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">3</div><div class="dders">Saat Matematik</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Geometri</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Fizik</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Kimya</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Biyoloji</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Türkçe</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Tarih</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Coğrafya</div></div></div></div><div class="dsec"><h4>Tam Destek Sistemi</h4><div class="feat-list"><div class="feat-item">Haftalık deneme sınavları ve net takibi</div><div class="feat-item">Deneme analizi ve hata kitapçığı</div><div class="feat-item">Birebir eğitim koçluğu</div><div class="feat-item">Kişiye özel çalışma programı</div><div class="feat-item">Anlık soru sorabilme — 7/24</div><div class="feat-item">Canlı dersler + otomatik kayıt</div></div></div><div class="dsec"><h4>Resmi YKS Kaynakları</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank">🔗 MEB Ölçme ve Değerlendirme</a><a class="kaynak-link" href="https://www.osym.gov.tr/" target="_blank">🔗 ÖSYM</a><a class="kaynak-link" href="https://ais.osym.gov.tr/" target="_blank">🔗 ÖSYM Aday İşlemleri</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Platformu</a></div></div><div class="<div class="dsec"><h4>Resmi YKS Kaynakları &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">YKS programımız ÖSYM kılavuzları, MEB müfredatı ve güncel TYT–AYT soru dağılımları esas alınarak yapılandırılmaktadır. SEO anahtar: YKS hazırlık, TYT online dershane, AYT hazırlık, üniversite sınavı online kurs, 12. sınıf dershane.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.osym.gov.tr/" target="_blank" rel="noopener">🔗 ÖSYM — Ölçme, Seçme ve Yerleştirme Merkezi</a><a class="kaynak-link" href="https://ais.osym.gov.tr/" target="_blank" rel="noopener">🔗 ÖSYM Aday İşlemleri Sistemi — ais.osym.gov.tr</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Ölçme ve Değerlendirme Genel Müdürlüğü</a><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a><a class="kaynak-link" href="https://yokatlas.yok.gov.tr/" target="_blank" rel="noopener">🔗 YÖK Atlas — Üniversite Tercih Rehberi</a></div></div>
-<div class="uyari-box">⚠️ Kontenjan sınırlıdır. 2026–2027 dönemi için yerinizi şimdi ayırtın.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-yks-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%20YKS%20TYT-AYT%20Haz%C4%B1rl%C4%B1k%20Program%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Haftal%C4%B1k%20ders%20saatleri%2C%20fiyat%20ve%202026-2027%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">⚠️ Kontenjan sınırlıdır. 2026–2027 dönemi için yerinizi şimdi ayırtın.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-yks-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%20YKS%20TYT-AYT%20Haz%C4%B1rl%C4%B1k%20Program%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Haftal%C4%B1k%20ders%20saatleri%2C%20fiyat%20ve%202026-2027%20kay%C4%B1t%20bilgilerini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('yks')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-tyt10" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-tyt10">✕</button><div class="dtag">Yaz Kampı · Maarif Model · TYT Hazırlık</div><h2>TYT Yaz Kampı (Maarif Model) ile 11. Sınıfa Sistemli Başlangıç</h2><p>Maarif Model yaklaşımı ile akademik altyapı güçlendirilir, analitik düşünme becerisi kazandırılır.</p></div><div class="dmodal-body"><div class="dsec"><h4>Haftalık Program — Toplam 15 Saat</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">4</div><div class="dders">Saat Matematik</div></div><div class="ders-card"><div class="dsaat">3</div><div class="dders">Saat Fizik</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Kimya</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Biyoloji</div></div><div class="ders-card"><div class="dsaat">4</div><div class="dders">Saat Etüt</div></div></div></div><div class="dsec"><h4>Eğitim Süreci</h4><div class="sistem-grid"><div class="sistem-item"><div class="si-icon">🎥</div><h5>Canlı Ders Sistemi</h5><p>Pasif dinleme yerine aktif öğrenme hedeflenir.</p></div><div class="sistem-item"><div class="si-icon">📝</div><h5>Etüt &amp; Soru Çözüm</h5><p>Yoğun soru çözümüyle bilgi kalıcı hale gelir.</p></div><div class="sistem-item"><div class="si-icon">👨‍🏫</div><h5>Birebir Koçluk</h5><p>Kişisel plan ve düzenli takip sistemi.</p></div><div class="sistem-item"><div class="si-icon">🎬</div><h5>Kayıtlı Dersler</h5><p>Kaçırılan dersler tekrar izlenebilir.</p></div></div></div><div class="dsec"><h4>Resmi Kaynaklar</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank">🔗 Talim ve Terbiye Kurulu — Maarif Model</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Platformu</a></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">Maarif Model Yaz Kampı içeriği Talim ve Terbiye Kurulu Maarif Model çerçeve belgesi ve MEB lise müfredatı doğrultusunda yapılandırılmıştır. SEO anahtar: Maarif Model yaz kampı, 10. sınıf TYT hazırlık, lise yaz okulu online.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank" rel="noopener">🔗 Talim ve Terbiye Kurulu — Maarif Model Çerçeve Belgesi</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Müfredat Portalı — mufredat.meb.gov.tr</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a></div></div>
-<div class="uyari-box">⚠️ Kontenjanlar sınırlıdır. Başvurular ön değerlendirmeden geçirilir.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-tyt10-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%2010.%20S%C4%B1n%C4%B1f%20Maarif%20Model%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Program%20i%C3%A7eri%C4%9Fi%2C%20tarihler%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">⚠️ Kontenjanlar sınırlıdır. Başvurular ön değerlendirmeden geçirilir.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-tyt10-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%2010.%20S%C4%B1n%C4%B1f%20Maarif%20Model%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Program%20i%C3%A7eri%C4%9Fi%2C%20tarihler%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('tyt10')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-tyt11" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-tyt11">✕</button><div class="dtag">Yaz Kampı · 11. Sınıf · TYT Hazırlık</div><h2>TYT Yaz Kampı — Sınava Erken ve Güçlü Başlangıç!</h2><p>TYT sınavına hazırlık sürecini doğru değerlendiren öğrenciler büyük avantaj elde eder.</p></div><div class="dmodal-body"><div class="dsec"><h4>Haftalık Ders Programı</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">4</div><div class="dders">Saat Matematik</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Geometri</div></div><div class="ders-card"><div class="dsaat">3</div><div class="dders">Saat Fizik</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Kimya</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Biyoloji</div></div></div><p style="font-size:12px;color:var(--muted);margin-top:8px">+ Yoğun soru çözüm etütleri</p></div><div class="dsec"><h4>Eğitim Sistemi</h4><div class="sistem-grid"><div class="sistem-item"><div class="si-icon">🎥</div><h5>Canlı Dersler</h5><p>Dersler canlı olarak işlenir, aktif katılım sağlanır.</p></div><div class="sistem-item"><div class="si-icon">📝</div><h5>Soru Çözüm</h5><p>Yoğun soru çözümüyle bilgi pekiştirilir.</p></div><div class="sistem-item"><div class="si-icon">📊</div><h5>Performans Takibi</h5><p>Gelişim düzenli analiz edilir ve takip edilir.</p></div><div class="sistem-item"><div class="si-icon">🎬</div><h5>Kayıtlı Dersler</h5><p>Tüm dersler kayıt altına alınır, tekrar izlenebilir.</p></div></div></div><div class="dsec"><h4>Resmi Kaynaklar</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank">🔗 Ölçme Değerlendirme Genel Müdürlüğü</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank">🔗 MEB Müfredat Portalı</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Eğitim Platformu</a></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">TYT Yaz Kampı içeriği güncel ÖSYM TYT soru dağılımı ve MEB lise müfredatı esas alınarak hazırlanmıştır. SEO anahtar: TYT yaz kampı, 11. sınıf online dershane, TYT hazırlık kursu.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.osym.gov.tr/" target="_blank" rel="noopener">🔗 ÖSYM — TYT Sınav Kılavuzu</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Ölçme Değerlendirme Genel Müdürlüğü</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Lise Müfredat Portalı</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a></div></div>
-<div class="uyari-box">⚠️ Kontenjanlar sınırlıdır. Başvurular değerlendirme sonrası kabul edilir.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-tyt11-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%2011.%20S%C4%B1n%C4%B1f%20TYT%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Program%20i%C3%A7eri%C4%9Fi%2C%20tarihler%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">⚠️ Kontenjanlar sınırlıdır. Başvurular değerlendirme sonrası kabul edilir.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-tyt11-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%2011.%20S%C4%B1n%C4%B1f%20TYT%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Program%20i%C3%A7eri%C4%9Fi%2C%20tarihler%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('tyt11')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-lgs-yaz" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-lgs-yaz">✕</button><div class="dtag">LGS Yaz Kampı · 9 Hafta · Temmuz–Ağustos</div><h2>9 Haftalık LGS Yaz Kampı ile Sınava Güçlü Başlangıç!</h2><p>Seviyeye göre belirlenen 8 kişilik VIP sınıflarda, birebir ilgiyle rakiplerinizin önüne geçin.</p></div><div class="dmodal-body"><div class="dsec"><h4>Haftalık Program</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">13</div><div class="dders">Saat Canlı Ders</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Günlük Etüt</div></div><div class="ders-card"><div class="dsaat">1</div><div class="dders">Haftalık Deneme</div></div><div class="ders-card"><div class="dsaat">8</div><div class="dders">Kişilik VIP Sınıf</div></div></div></div><div class="dsec"><h4>Kamp Paketi Detayları</h4><div class="sistem-grid"><div class="sistem-item"><div class="si-icon">🎥</div><h5>13 Saat Canlı Ders</h5><p>Uzman kadro eşliğinde etkileşimli konu anlatımları ve otomatik ders kayıtları.</p></div><div class="sistem-item"><div class="si-icon">✍️</div><h5>Günlük Etüt &amp; Soru Odası</h5><p>Her gün 2 saat öğretmen eşliğinde etüt. Soru Odası'nda birebir uzman desteği.</p></div><div class="sistem-item"><div class="si-icon">📊</div><h5>Haftalık Deneme &amp; Analiz</h5><p>Güncel basılı deneme sınavları, anında mobil hata kitapçığı ve birebir gelişim takibi.</p></div><div class="sistem-item"><div class="si-icon">💻</div><h5>Dev Dijital Kütüphane</h5><p>55 yayınevi, 1 milyon soru havuzu ve sınırsız Z-kitap erişimi.</p></div></div></div><div class="dsec"><h4>Resmi Kaynaklar</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank">🔗 MEB Ölçme ve Değerlendirme</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank">🔗 Talim ve Terbiye Kurulu</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Platformu</a></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">LGS Yaz Kampı; ÖDSGM sınav takvimi, güncel LGS soru dağılımı ve Maarif Model içerik çerçevesi doğrultusunda planlanmıştır. SEO anahtar: LGS yaz kampı, 8. sınıf yaz okulu, online LGS hazırlık kampı.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Ölçme ve Değerlendirme Genel Müdürlüğü</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank" rel="noopener">🔗 Talim ve Terbiye Kurulu — ttkb.meb.gov.tr</a><a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Müfredat Portalı</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a></div></div>
-<div class="uyari-box">🚀 Önce başla, önde bitir! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-lgs-yaz-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%209%20Haftal%C4%B1k%20LGS%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Temmuz-A%C4%9Fustos%20program%C4%B1%2C%20i%C3%A7erik%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">🚀 Önce başla, önde bitir! Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-lgs-yaz-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%209%20Haftal%C4%B1k%20LGS%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Temmuz-A%C4%9Fustos%20program%C4%B1%2C%20i%C3%A7erik%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('lgs-yaz')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-9den10a" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-9den10a">✕</button><div class="dtag">9'dan 10'a Geçiş Yaz Kampı · Lise</div><h2>9'dan 10. Sınıfa Geçenlere Özel Yaz Kampı!</h2><p>9. sınıfı geride bırakıp 10. sınıfa geçerken sağlam bir temel oluşturmak ister misin?</p></div><div class="dmodal-body"><div class="dsec"><h4>Haftalık Ders Programı</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Matematik</div></div><div class="ders-card"><div class="dsaat">2</div><div class="dders">Saat Fizik</div></div><div class="ders-card"><div class="dsaat">4</div><div class="dders">Saat Kitap Okuma Atölyesi</div></div></div><p style="font-size:12px;color:var(--muted);margin-top:8px">Kitap okuma programı edebiyat öğretmeni eşliğinde gerçekleştirilecektir.</p></div><div class="dsec"><h4>Bu Kampta Öğrenciler Neler Kazanır?</h4><div class="feat-list"><div class="feat-item">Eksik konularını tamamlar</div><div class="feat-item">Edebiyat öğretmeni eşliğinde okuma alışkanlığı kazanır</div><div class="feat-item">Yeni döneme hazır ve özgüvenli başlar</div><div class="feat-item">Disiplinli çalışma sistemi oluşturur</div></div></div><div class="dsec"><h4>Resmi Kaynaklar</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank">🔗 Talim ve Terbiye Kurulu</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Platformu</a></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">Program içeriği MEB lise müfredatı ve Talim Terbiye Kurulu kararları referans alınarak hazırlanmıştır. SEO anahtar: 9. sınıf yaz kampı, lise yaz okulu, 10. sınıfa geçiş hazırlık programı.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank" rel="noopener">🔗 Talim ve Terbiye Kurulu — ttkb.meb.gov.tr</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu — eba.gov.tr</a><a class="kaynak-link" href="https://ogm.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Öğretmen Yetiştirme Genel Müdürlüğü</a></div></div>
-<div class="uyari-box">⚠️ Kontenjanlarımız sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-9den10a-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%209%27dan%2010.%20S%C4%B1n%C4%B1fa%20Ge%C3%A7i%C5%9F%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Program%20i%C3%A7eri%C4%9Fi%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">⚠️ Kontenjanlarımız sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-9den10a-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%209%27dan%2010.%20S%C4%B1n%C4%B1fa%20Ge%C3%A7i%C5%9F%20Yaz%20Kamp%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Program%20i%C3%A7eri%C4%9Fi%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('9den10a')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 <div id="modal-kitap" class="dmodal-overlay"><div class="dmodal"><div class="dmodal-hero"><button class="dmodal-close" id="close-kitap">✕</button><div class="dtag">Ek Program · Kitap Okuma Atölyesi</div><h2>Online Kitap Okuma Atölyesi ile Okuyan, Anlayan ve Yorumlayan Bireyler Yetişir</h2><p>8 haftalık sistemli gelişim programı.</p></div><div class="dmodal-body"><div class="dsec"><h4>8 Haftalık Program İçeriği</h4><div class="ders-grid"><div class="ders-card"><div class="dsaat">📚</div><div class="dders">Haftalık okuma planı</div></div><div class="ders-card"><div class="dsaat">👩‍🏫</div><div class="dders">Öğretmen eşliğinde analiz</div></div><div class="ders-card"><div class="dsaat">💬</div><div class="dders">Yorumlama çalışmaları</div></div><div class="ders-card"><div class="dsaat">📝</div><div class="dders">Kelime geliştirme</div></div></div></div><div class="dsec"><h4>Eğitim Süreci</h4><div class="sistem-grid"><div class="sistem-item"><div class="si-icon">📖</div><h5>Rehberli Okuma</h5><p>Seviyeye uygun kitaplarla ilerler.</p></div><div class="sistem-item"><div class="si-icon">🧠</div><h5>Anlama Çalışmaları</h5><p>Metinler üzerinden detaylı analiz yapılır.</p></div><div class="sistem-item"><div class="si-icon">🗣️</div><h5>Yorumlama</h5><p>Düşüncelerini ifade etmeyi öğrenir.</p></div><div class="sistem-item"><div class="si-icon">📊</div><h5>Sürekli Takip</h5><p>Her öğrencinin gelişimi izlenir.</p></div></div></div><div class="dsec"><h4>Resmi Kaynaklar</h4><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank">🔗 Milli Eğitim Bakanlığı</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank">🔗 EBA Okuma İçerikleri</a><a class="kaynak-link" href="https://www.unesco.org/en/literacy" target="_blank">🔗 UNESCO Okuryazarlık</a><a class="kaynak-link" href="https://www.oecd.org/education/" target="_blank">🔗 OECD Eğitim Araştırmaları</a></div></div><div class="<div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4><p style="font-size:12px;color:var(--muted);margin-bottom:10px">Kitap Okuma Atölyesi; UNESCO okuryazarlık standartları, OECD PISA okuma becerileri çerçevesi ve MEB okuma kültürü politikaları doğrultusunda yapılandırılmıştır. SEO anahtar: online kitap okuma atölyesi, okuma alışkanlığı kazandırma, çocuklara kitap okuma programı.</p><div class="kaynak-list"><a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a><a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Okuma İçerikleri — eba.gov.tr</a><a class="kaynak-link" href="https://www.unesco.org/en/literacy" target="_blank" rel="noopener">🔗 UNESCO — Global Literacy Framework</a><a class="kaynak-link" href="https://www.oecd.org/education/pisa/" target="_blank" rel="noopener">🔗 OECD PISA — Reading Literacy Assessment</a><a class="kaynak-link" href="https://ttkb.meb.gov.tr/" target="_blank" rel="noopener">🔗 Talim ve Terbiye Kurulu — ttkb.meb.gov.tr</a></div></div>
-<div class="uyari-box">⚠️ Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-kitap-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%20Online%20Kitap%20Okuma%20At%C3%B6lyesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%208%20haftal%C4%B1k%20program%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a></div></div></div>
+<div class="uyari-box">⚠️ Kontenjanlar sınırlıdır.</div></div><div class="dmodal-footer"><button class="dbtn-red" id="close-kitap-kayit">Hemen Kayıt Ol →</button><a href="https://wa.me/908503034014?text=Merhaba%2C%20Online%20Kitap%20Okuma%20At%C3%B6lyesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%208%20haftal%C4%B1k%20program%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
+  <button onclick="copyPaketLink('kitap')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div></div></div>
 
 
 <!-- 9-10-11. SINIF MODAL -->
@@ -2405,7 +2495,9 @@ footer::before {
   <div class="dmodal-footer">
     <button class="dbtn-red" id="close-lise91011-kayit">Hemen Kayıt Ol →</button>
     <a href="https://wa.me/908503034014?text=Merhaba%2C%209-10-11.%20S%C4%B1n%C4%B1flar%20i%C3%A7in%20Yeni%20Nesil%20Online%20E%C4%9Fitim%20Sistemi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%201-1%20ko%C3%A7luk%2C%20E%C3%87%C4%B0T%20sistemi%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp Bilgi Al</a>
-  </div>
+  
+  <button onclick="copyPaketLink('lise')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;display:flex;align-items:center;gap:5px;" onmouseover="this.style.background='rgba(255,255,255,.18)';this.style.color='#fff'" onmouseout="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.7)'">🔗 Paylaş</button>
+</div>
 </div></div>
 
 
@@ -2413,10 +2505,10 @@ footer::before {
 <div id="bmodal-lgs" class="blog-modal-overlay" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="blog-modal">
     <div class="bm-hero">
-      <button class="bm-close" onclick="document.getElementById('bmodal-lgs').classList.remove('open');history.pushState(null,null,' ')">✕</button>
+      <button class="bm-close" onclick="document.getElementById('bmodal-lgs').classList.remove('open')">✕</button>
       <div style="position:absolute;top:16px;right:56px;display:flex;gap:8px;">
         <button onclick="copyBlogLink('blog-lgs-hazirlik')" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">🔗 Linki Kopyala</button>
-        <a href="#" onclick="var u=encodeURIComponent('Online VIP Dershane Blog: LGS\'de Yüksek Net İçin 5 Altın Kural → '+window.location.origin+window.location.pathname+'#blog-lgs-hazirlik');window.open('https://wa.me/?text='+u,'_blank');return false;" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
+        <a href="#" onclick="var u=encodeURIComponent('Online VIP Dershane Blog: LGS\'de Yüksek Net İçin 5 Altın Kural → '+SITE_URL+'/#blog-lgs-hazirlik');window.open('https://wa.me/?text='+u,'_blank');return false;" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
       </div>
       <div class="bm-cat">🏆 LGS Hazırlık</div>
       <h2 itemprop="headline">LGS'de Yüksek Net İçin 5 Altın Kural:<br>Hedef Liseye Nasıl Ulaşırsın?</h2>
@@ -2510,10 +2602,10 @@ footer::before {
 <div id="bmodal-online" class="blog-modal-overlay" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="blog-modal">
     <div class="bm-hero" style="background:linear-gradient(135deg,#050d1f 0%,#0a1e42 50%,#1a3fad 100%);">
-      <button class="bm-close" onclick="document.getElementById('bmodal-online').classList.remove('open');history.pushState(null,null,' ')">✕</button>
+      <button class="bm-close" onclick="document.getElementById('bmodal-online').classList.remove('open')">✕</button>
       <div style="position:absolute;top:16px;right:56px;display:flex;gap:8px;">
         <button onclick="copyBlogLink('blog-online-egitim')" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">🔗 Linki Kopyala</button>
-        <a href="#" onclick="var u=encodeURIComponent('Online VIP Dershane Blog: Online Eğitim Neden Daha Etkili? → '+window.location.origin+window.location.pathname+'#blog-online-egitim');window.open('https://wa.me/?text='+u,'_blank');return false;" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
+        <a href="#" onclick="var u=encodeURIComponent('Online VIP Dershane Blog: Online Eğitim Neden Daha Etkili? → '+SITE_URL+'/#blog-online-egitim');window.open('https://wa.me/?text='+u,'_blank');return false;" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
       </div>
       <div class="bm-cat" style="background:rgba(37,84,212,.2);border-color:rgba(58,111,245,.35);color:#a5c0ff;">💻 Online Eğitim</div>
       <h2 itemprop="headline">Online Eğitim Neden Daha Etkili?<br>VIP Sistemin Klasik Dershaneden 7 Farkı</h2>
@@ -2605,6 +2697,167 @@ footer::before {
   </div>
 </div>
 
+
+<div id="modal-yazili-567" class="dmodal-overlay"><div class="dmodal">
+  <div class="dmodal-hero">
+    <button class="dmodal-close" id="close-yazili-567">✕</button>
+    <div class="dtag">5-6-7. Sınıf · Yazılıya Hazırlık Kampı · Mayıs-Haziran 2025</div>
+    <h2>5-6-7. Sınıf Yazılıya Hazırlık Programı</h2>
+    <p>Okullarımızda yaklaşan yazılı sınavlar öncesinde eksikleri tamamlayan, konu tekrarlarını verimli şekilde yapan yoğun hazırlık programı.</p>
+  </div>
+  <div class="dmodal-body">
+    <div class="dsec"><h4>🗓 Program Tarihleri</h4>
+      <div class="ders-grid">
+        <div class="ders-card"><div class="dsaat">📌</div><div class="dders">23-24 Mayıs — 1. Etap</div></div>
+        <div class="ders-card"><div class="dsaat">📌</div><div class="dders">30-31 Mayıs — 2. Etap</div></div>
+        <div class="ders-card"><div class="dsaat">📌</div><div class="dders">6-7 Haziran — 3. Etap</div></div>
+        <div class="ders-card"><div class="dsaat">✍️</div><div class="dders">Toplam 27 Saat Yoğun Program</div></div>
+      </div>
+    </div>
+    <div class="dsec"><h4>🎯 Program İçeriği</h4>
+      <div class="feat-list">
+        <div class="feat-item">Yazılı odaklı konu tekrarları — MEB müfredatı esas alınarak</div>
+        <div class="feat-item">Yeni nesil soru çözümleri — PISA ve MEB formatında</div>
+        <div class="feat-item">Öğretmen destekli PDF çalışma dosyaları — her öğrenciye özel</div>
+        <div class="feat-item">Branş bazlı özel hazırlık — Matematik, Türkçe, Fen, Sosyal</div>
+        <div class="feat-item">Sınav provası niteliğinde çalışmalar</div>
+        <div class="feat-item">Eksik tamamlama ve soru çözüm etütleri</div>
+      </div>
+    </div>
+    <div class="dsec"><h4>💰 Ücretlendirme</h4>
+      <div class="sistem-grid">
+        <div class="sistem-item"><div class="si-icon">📘</div><h5>5-6-7. Sınıflar</h5><p><strong style="font-size:22px;color:var(--accent);">2.500 ₺</strong><br>KDV dahil — 3 etap tam program</p></div>
+        <div class="sistem-item"><div class="si-icon">📄</div><h5>Dahil Olanlar</h5><p>Canlı dersler, PDF dosyaları, soru çözüm etütleri, öğretmen desteği</p></div>
+      </div>
+    </div>
+    <div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.85">Program içeriği MEB müfredatı ve güncel yazılı sınav formatına uygun hazırlanmıştır. SEO anahtar: 5. sınıf yazılıya hazırlık, 6. sınıf yazılı sınavı, 7. sınıf yazılı hazırlık, online yazılıya hazırlık kursu.</p>
+      <div class="kaynak-list">
+        <a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a>
+        <a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Müfredat Portalı</a>
+        <a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu</a>
+        <a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Ölçme Değerlendirme</a>
+      </div>
+    </div>
+    <div class="uyari-box">⭐ Kontenjanlar sınırlıdır. Dersler online canlı gerçekleşir. Öğrenciler süreç boyunca öğretmen desteği alır.</div>
+  </div>
+  <div class="dmodal-footer">
+    <button class="dbtn-red" id="close-yazili-567-kayit">Hemen Kayıt Ol →</button>
+    <a href="https://wa.me/908503034014?text=Merhaba%2C%205-6-7.%20S%C4%B1n%C4%B1f%20Yaz%C4%B1l%C4%B1ya%20Haz%C4%B1rl%C4%B1k%20Program%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Tarihler%20ve%20kay%C4%B1t%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener">💬 WhatsApp Bilgi Al</a>
+    <button onclick="copyPaketLink('yazili-567')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Paylaş</button>
+  </div>
+</div></div>
+
+<div id="modal-yazili-91011" class="dmodal-overlay"><div class="dmodal">
+  <div class="dmodal-hero">
+    <button class="dmodal-close" id="close-yazili-91011">✕</button>
+    <div class="dtag">9-10-11. Sınıf · Yazılıya Hazırlık Kampı · Mayıs-Haziran 2025</div>
+    <h2>9-10-11. Sınıf Yazılıya Hazırlık Programı</h2>
+    <p>Lise öğrencilerine özel branş bazlı yazılı hazırlık. Eksik tamamlama, sınav provası ve yeni nesil soru çözümleriyle güçlü bir hazırlık.</p>
+  </div>
+  <div class="dmodal-body">
+    <div class="dsec"><h4>🗓 Program Tarihleri</h4>
+      <div class="ders-grid">
+        <div class="ders-card"><div class="dsaat">📌</div><div class="dders">23-24 Mayıs — 1. Etap</div></div>
+        <div class="ders-card"><div class="dsaat">📌</div><div class="dders">30-31 Mayıs — 2. Etap</div></div>
+        <div class="ders-card"><div class="dsaat">📌</div><div class="dders">6-7 Haziran — 3. Etap</div></div>
+        <div class="ders-card"><div class="dsaat">✍️</div><div class="dders">Toplam 27 Saat Yoğun Program</div></div>
+      </div>
+    </div>
+    <div class="dsec"><h4>🎯 Program İçeriği</h4>
+      <div class="feat-list">
+        <div class="feat-item">Yazılı odaklı konu tekrarları — lise müfredatı esas alınarak</div>
+        <div class="feat-item">Yeni nesil soru çözümleri — TYT formatında sorular dahil</div>
+        <div class="feat-item">Branş bazlı özel hazırlık — Matematik, Fizik, Kimya, Biyoloji, Türkçe, Tarih</div>
+        <div class="feat-item">Öğretmen destekli PDF çalışma dosyaları</div>
+        <div class="feat-item">Sınav provası niteliğinde çalışmalar</div>
+        <div class="feat-item">Eksik tamamlama ve soru çözüm etütleri</div>
+      </div>
+    </div>
+    <div class="dsec"><h4>💰 Ücretlendirme</h4>
+      <div class="sistem-grid">
+        <div class="sistem-item"><div class="si-icon">📗</div><h5>9-10-11. Sınıflar</h5><p><strong style="font-size:22px;color:var(--accent);">3.000 ₺</strong><br>KDV dahil — 3 etap tam program</p></div>
+        <div class="sistem-item"><div class="si-icon">📄</div><h5>Dahil Olanlar</h5><p>Canlı dersler, PDF dosyaları, soru çözüm etütleri, öğretmen desteği</p></div>
+      </div>
+    </div>
+    <div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.85">Program içeriği MEB lise müfredatı ve ÖSYM TYT formatı esas alınarak hazırlanmıştır. SEO anahtar: 9. sınıf yazılıya hazırlık, 10. sınıf yazılı sınavı, 11. sınıf yazılı hazırlık, lise online yazılı kursu.</p>
+      <div class="kaynak-list">
+        <a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a>
+        <a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Lise Müfredat Portalı</a>
+        <a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu</a>
+        <a class="kaynak-link" href="https://www.osym.gov.tr/" target="_blank" rel="noopener">🔗 ÖSYM — TYT Sınav Kılavuzu</a>
+      </div>
+    </div>
+    <div class="uyari-box">⭐ Kontenjanlar sınırlıdır. Dersler online canlı gerçekleşir. Öğrenciler süreç boyunca öğretmen desteği alır.</div>
+  </div>
+  <div class="dmodal-footer">
+    <button class="dbtn-red" id="close-yazili-91011-kayit">Hemen Kayıt Ol →</button>
+    <a href="https://wa.me/908503034014?text=Merhaba%2C%209-10-11.%20S%C4%B1n%C4%B1f%20Yaz%C4%B1l%C4%B1ya%20Haz%C4%B1rl%C4%B1k%20Program%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Tarihler%20ve%20kay%C4%B1t%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener">💬 WhatsApp Bilgi Al</a>
+    <button onclick="copyPaketLink('yazili-91011')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Paylaş</button>
+  </div>
+</div></div>
+
+<div id="modal-start" class="dmodal-overlay"><div class="dmodal">
+  <div class="dmodal-hero" style="background:linear-gradient(135deg,#050d1f 0%,#0a1830 50%,#1a3fad 100%);">
+    <button class="dmodal-close" id="close-start">✕</button>
+    <div class="dtag">VIP Start Paketi · Yıl Boyu · Tam Entegre Başarı Sistemi</div>
+    <h2>VIP Start Eğitim Paketi ile Sistemli ve Kalıcı Başarı</h2>
+    <p>Eğitimde gerçek başarı, sadece ders anlatımı ile değil; planlı çalışma, düzenli takip ve doğru sistem ile elde edilir.</p>
+  </div>
+  <div class="dmodal-body">
+    <div class="dsec"><h4>Bu Paket Neden Farklı?</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.85">Birçok öğrenci, düzensiz çalışma ve eksik takip nedeniyle potansiyelinin altında kalır. VIP Start Paketi, öğrencinin tüm akademik sürecini kapsayan tam entegre bir başarı modelidir. Bu sistem sadece ders anlatmaz; öğrencinin tüm öğrenme sürecini yönetir.</p>
+      <div class="feat-list">
+        <div class="feat-item">Planlı ve sistemli çalışma modeli — kişiye özel haftalık program</div>
+        <div class="feat-item">Düzenli performans takibi — haftalık analiz ve raporlama</div>
+        <div class="feat-item">Sürekli geri bildirim — öğretmen ve koç desteği</div>
+        <div class="feat-item">Eksiklerin anında tespiti ve çözümü — EÇİT soru sistemi</div>
+      </div>
+    </div>
+    <div class="dsec"><h4>📦 Paket İçeriği</h4>
+      <div class="sistem-grid">
+        <div class="sistem-item"><div class="si-icon">✍️</div><h5>Yazılı Hazırlık Sistemi</h5><p>MEB müfredatına uygun yazılı çalışmaları ile sınavlara eksiksiz hazırlık.</p></div>
+        <div class="sistem-item"><div class="si-icon">📚</div><h5>Etüt ve Soru Çözüm</h5><p>Öğrencinin çözemediği sorular için birebir destek ve video çözüm.</p></div>
+        <div class="sistem-item"><div class="si-icon">🎓</div><h5>Okul Sonrası Birebir Destek</h5><p>Günlük eksiklerin hızlı şekilde kapatılması için anlık destek.</p></div>
+        <div class="sistem-item"><div class="si-icon">📊</div><h5>Deneme Kulübü</h5><p>Türkiye geneli denemeler ve detaylı analiz sistemi ile net takibi.</p></div>
+        <div class="sistem-item"><div class="si-icon">🤖</div><h5>Geniş Soru Havuzu</h5><p>1.000.000+ soru ile sınırsız pratik imkanı ve yapay zeka desteği.</p></div>
+        <div class="sistem-item"><div class="si-icon">👨‍🏫</div><h5>Birebir Koçluk</h5><p>Haftalık 1-1 koçluk görüşmesi ve veli bilgilendirme raporu.</p></div>
+      </div>
+    </div>
+    <div class="dsec"><h4>🔄 Eğitim Süreci Nasıl İşler?</h4>
+      <div class="ders-grid">
+        <div class="ders-card"><div class="dsaat">1️⃣</div><div class="dders">Planlama — Öğrenciye özel çalışma planı hazırlanır</div></div>
+        <div class="ders-card"><div class="dsaat">2️⃣</div><div class="dders">Uygulama — Canlı dersler ve etütlerle plan hayata geçirilir</div></div>
+        <div class="ders-card"><div class="dsaat">3️⃣</div><div class="dders">Takip — Performans düzenli olarak analiz edilir</div></div>
+        <div class="ders-card"><div class="dsaat">4️⃣</div><div class="dders">Gelişim — Eksikler tespit edilir, sürekli iyileşme sağlanır</div></div>
+      </div>
+    </div>
+    <div class="dsec"><h4>👥 Kimler İçin Uygundur?</h4>
+      <div class="feat-list">
+        <div class="feat-item">Düzenli ve sistemli çalışmak isteyen öğrenciler</div>
+        <div class="feat-item">Yüksek akademik hedefleri olan öğrenciler</div>
+        <div class="feat-item">Takip edilmeden verimli çalışamayan öğrenciler</div>
+      </div>
+    </div>
+    <div class="dsec"><h4>Resmi Kaynaklar &amp; Referanslar</h4>
+      <p style="font-size:13px;color:var(--muted);line-height:1.85">VIP Start Paketi MEB müfredatına uygun hazırlanmıştır. SEO anahtar: yıl boyu online dershane, tam entegre eğitim sistemi, birebir koçluk programı, start eğitim paketi, özel ders sistemi.</p>
+      <div class="kaynak-list">
+        <a class="kaynak-link" href="https://www.meb.gov.tr/" target="_blank" rel="noopener">🔗 Milli Eğitim Bakanlığı — meb.gov.tr</a>
+        <a class="kaynak-link" href="https://mufredat.meb.gov.tr/" target="_blank" rel="noopener">🔗 MEB Müfredat Portalı</a>
+        <a class="kaynak-link" href="https://eba.gov.tr/" target="_blank" rel="noopener">🔗 EBA Eğitim Platformu</a>
+        <a class="kaynak-link" href="https://odsgm.meb.gov.tr/" target="_blank" rel="noopener">🔗 Ölçme Değerlendirme Sistemi</a>
+      </div>
+    </div>
+    <div class="uyari-box">⚠️ Bu paket her öğrenci için uygun değildir. Başvurular değerlendirme ile kabul edilir. Amacımız kalabalık değil, başarıdır. Kontenjanlar sınırlıdır.</div>
+  </div>
+  <div class="dmodal-footer">
+    <button class="dbtn-red" id="close-start-kayit">Hemen Başvur →</button>
+    <a href="https://wa.me/908503034014?text=Merhaba%2C%20VIP%20Start%20E%C4%9Fitim%20Paketi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.%20Paket%20i%C3%A7eri%C4%9Fi%20ve%20fiyat%20bilgisini%20%C3%B6%C4%9Frenebilir%20miyim%3F" class="dbtn-wh" target="_blank" rel="noopener">💬 WhatsApp Bilgi Al</a>
+    <button onclick="copyPaketLink('start')" title="Linki kopyala" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.7);transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Paylaş</button>
+  </div>
+</div></div>
+
 <!-- CHECKOUT MODAL -->
 <div id="modal-checkout" class="modal-overlay">
   <div class="modal">
@@ -2673,7 +2926,10 @@ var PRODUCTS=[
   {id:'k10',cat:'yaz',icon:'⛺',name:'10. Sınıf Maarif Model Kampı',desc:'Maarif Model ile 11. sınıfa güçlü başlangıç.',tags:['Kamp','Kontenjan Sınırlı'],list:30000,net:24000,best:false},
   {id:'t11',cat:'yaz',icon:'📝',name:'11. Sınıf TYT Yaz Kampı',desc:'TYT erken start. 15 saatlik haftalık program.',tags:['TYT','Yaz'],list:30000,net:24000,best:false},
   {id:'lgsy',cat:'yaz',icon:'🥇',name:'LGS Yaz Kampı (9 Hafta)',desc:'13 saat canlı ders, günlük etüt.',tags:['LGS','Kontenjan Sınırlı'],list:30000,net:24000,best:false},
-  {id:'kitap',cat:'ek',icon:'📖',name:'Kitap Okuma Atölyesi',desc:'8 haftalık okuma alışkanlığı programı.',tags:['Atölye'],list:15000,net:12000,best:false}
+  {id:'kitap',cat:'ek',icon:'📖',name:'Kitap Okuma Atölyesi',desc:'8 haftalık okuma alışkanlığı programı.',tags:['Atölye'],list:15000,net:12000,best:false},
+  {id:'w567',cat:'yazili',icon:'✍️',name:'5-6-7. Sınıf Yazılıya Hazırlık',desc:'3 haftalık yoğun yazılı hazırlık kampı.',tags:['Yazılıya Hazırlık'],list:3000,net:2500,best:false},
+  {id:'w91011',cat:'yazili',icon:'📝',name:'9-10-11. Sınıf Yazılıya Hazırlık',desc:'3 haftalık yoğun yazılı hazırlık kampı.',tags:['Yazılıya Hazırlık'],list:3750,net:3000,best:false},
+  {id:'start',cat:'yazili',icon:'🚀',name:'VIP Start Paketi',desc:'Yıl boyu tam entegre başarı sistemi.',tags:['Start Paket','Yıl Boyu'],list:0,net:0,best:false,fiyatMetni:'Görüşme ile belirlenir'}
 ];
 
 var COURSES=[
@@ -2688,7 +2944,10 @@ var COURSES=[
   {icon:'☀️',name:"9'dan 10'a Geçiş Yaz Kampı",fiyat:'16.000₺',desc:'Matematik, Fizik ve Kitap Okuma Atölyesi ile yeni döneme güçlü başlangıç.',tags:['Yaz Kampı','Lise'],cat:'kamp',modal:'modal-9den10a'},
   {icon:'🌞',name:'5–6–7. Sınıf Yaz Okulu',fiyat:'16.000₺',desc:'Yaz tatilinde akademik gelişim.',tags:['Yaz Okulu','Ortaokul'],cat:'kamp'},
   {icon:'🥇',name:'LGS Yaz Kampı (9 Hafta)',fiyat:'24.000₺',desc:'Temmuz–Ağustos LGS yaz kampı. 13 saat canlı ders, günlük etüt.',tags:['LGS','Yaz Kampı'],cat:'kamp',modal:'modal-lgs-yaz',badge:'Kontenjan Sınırlı'},
-  {icon:'📖',name:'Kitap Okuma Atölyesi',fiyat:'12.000₺',desc:'8 haftalık okuma alışkanlığı ve yorumlama becerisi programı.',tags:['Atölye','Tüm Seviyeler'],cat:'atolye',modal:'modal-kitap'}
+  {icon:'📖',name:'Kitap Okuma Atölyesi',fiyat:'12.000₺',desc:'8 haftalık okuma alışkanlığı ve yorumlama becerisi programı.',tags:['Atölye','Tüm Seviyeler'],cat:'atolye',modal:'modal-kitap'},
+  {icon:'✍️',name:'5-6-7. Sınıf Yazılıya Hazırlık',fiyat:'2.500₺',desc:'23-24 Mayıs · 30-31 Mayıs · 6-7 Haziran. Yazılı odaklı konu tekrarları, yeni nesil soru çözümleri, PDF çalışma dosyaları.',tags:['Yazılıya Hazırlık','5-6-7. Sınıf'],cat:'yazili',modal:'modal-yazili-567',badge:'Kayıt Açık'},
+  {icon:'📝',name:'9-10-11. Sınıf Yazılıya Hazırlık',fiyat:'3.000₺',desc:'23-24 Mayıs · 30-31 Mayıs · 6-7 Haziran. Branş bazlı özel hazırlık, eksik tamamlama ve sınav provası çalışmaları.',tags:['Yazılıya Hazırlık','9-10-11. Sınıf'],cat:'yazili',modal:'modal-yazili-91011',badge:'Kayıt Açık'},
+  {icon:'🚀',name:'VIP Start Paketi',fiyat:'Fiyat için arayın',desc:'Yıl boyu tam entegre başarı sistemi. Yazılı hazırlık + deneme sistemi + etüt desteği + birebir takip.',tags:['Start Paket','Yıl Boyu'],cat:'yazili',modal:'modal-start',badge:'Sınırlı Kontenjan'}
 ];
 
 var cart=[],checkStep=1,sInfo={},currentCat='donem';
@@ -2738,11 +2997,9 @@ function renderProducts(cat){
       +'<div class="pcard-info"><h3>'+p.name+'</h3><p>'+p.desc+'</p>'
       +'<div class="ptags">'+tags+'</div></div>'
       +'<div class="price-col">'
-      +'<div class="old-price">'+fmt(p.list)+'</div>'
-      +'<div class="new-price">'+fmt(p.net)+'</div>'
-      +'<div class="disc-pill">%'+disc+' İndirim</div>'
+      +(p.fiyatMetni?'<div class="new-price" style="font-size:14px;margin-top:8px;">'+p.fiyatMetni+'</div>':('<div class="old-price">'+fmt(p.list)+'</div>'+'<div class="new-price">'+fmt(p.net)+'</div>'+'<div class="disc-pill">%'+disc+' İndirim</div>'))
       +'<button class="add-btn'+(inCart?' added':'')+'" onclick="toggleCart(\''+p.id+'\')">'
-      +(inCart?'✓ Eklendi':'Sepete Ekle')+'</button></div></div>';
+      +(inCart?'✓ Seçildi':'Eğitimi Al')+'</button></div></div>';
   }).join('');
 }
 
@@ -2765,7 +3022,7 @@ function renderCart(){
   if(sub)sub.textContent=cart.length?'('+cart.length+' ürün)':'';
   if(!body)return;
   if(!cart.length){
-    body.innerHTML='<div class="cart-empty"><div>🛍️</div><p>Henüz ürün eklemediniz.</p></div>';
+    body.innerHTML='<div class="cart-empty"><div>📋</div><p>Henüz program seçmediniz.</p></div>';
     if(coBtn)coBtn.disabled=true;
     return;
   }
@@ -2818,7 +3075,7 @@ function renderCheckoutStep(){
     var items=cart.map(function(i){return '<div class="os-item"><span>'+i.name+'</span><span>'+fmt(i.net)+'</span></div>';}).join('');
     body.innerHTML=steps2+'<div class="os-box">'+items+'<div class="os-total"><span>Toplam</span><span>'+fmt(total)+'</span></div></div>'
       +'<div class="note-box">ℹ️ Ödeme onayından sonra 24 saat içinde programınız aktifleştirilir.</div>'
-      +'<button class="mbtn red" onclick="goStep3()">Ödemeye Geç →</button>'
+      +'<button class="mbtn red" onclick="goStep3()">Eğitime Kayıt Ol →</button>'
       +'<button class="mbtn outline" onclick="checkStep=1;renderCheckoutStep()">← Geri</button>';
   } else if(checkStep===3){
     title.textContent='Ödeme Yöntemi';
@@ -2882,9 +3139,10 @@ function goStep2(){
 function goStep3(){checkStep=3;renderCheckoutStep();}
 
 // ─── TABS ───
-document.getElementById('tab-donem').addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});this.classList.add('active');renderProducts('donem');});
-document.getElementById('tab-yaz').addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});this.classList.add('active');renderProducts('yaz');});
-document.getElementById('tab-ek').addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});this.classList.add('active');renderProducts('ek');});
+var _td=document.getElementById('tab-donem');if(_td)_td.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});this.classList.add('active');renderProducts('donem');});
+var _ty=document.getElementById('tab-yaz');if(_ty)_ty.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});this.classList.add('active');renderProducts('yaz');});
+var _te=document.getElementById('tab-ek');if(_te)_te.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});this.classList.add('active');renderProducts('ek');});
+
 
 // ─── COUNTDOWN ───
 var target=new Date(Date.now()+30*24*60*60*1000);
@@ -2909,6 +3167,14 @@ if(!localStorage.getItem('cerez')){document.getElementById('cerez-banner').class
 
 // ─── MODAL LINKS ───
 setTimeout(function(){
+  // Tab-yazili güvenli başlat
+  var _tw = document.getElementById('tab-yazili');
+  if(_tw) _tw.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+    this.classList.add('active');
+    renderProducts('yazili');
+  });
+
   var linkler={'link-gizlilik':'modal-gizlilik','link-satis':'modal-satis','link-kullanici':'modal-kullanici','link-cerez':'modal-cerez','link-iade':'modal-iade','link-hakkimizda':'modal-hakkimizda'};
   Object.keys(linkler).forEach(function(lid){
     var el=document.getElementById(lid);
@@ -2933,6 +3199,9 @@ setTimeout(function(){
     ['close-9den10a','modal-9den10a'],['close-9den10a-kayit','modal-9den10a'],
     ['close-kitap','modal-kitap'],['close-kitap-kayit','modal-kitap'],
     ['close-lise91011','modal-lise91011'],['close-lise91011-kayit','modal-lise91011'],
+    ['close-yazili-567','modal-yazili-567'],['close-yazili-567-kayit','modal-yazili-567'],
+    ['close-yazili-91011','modal-yazili-91011'],['close-yazili-91011-kayit','modal-yazili-91011'],
+    ['close-start','modal-start'],['close-start-kayit','modal-start'],
     ['close-checkout','modal-checkout']
   ];
   closers.forEach(function(pair){
@@ -3001,6 +3270,10 @@ var hashModalMap = {
   '#kitap':            'modal-kitap',
   '#yaziliya':         'modal-tyt11',
   '#kpss':             null,
+  '#yazili-567':       'modal-yazili-567',
+  '#yazili-91011':     'modal-yazili-91011',
+  '#start':            'modal-start',
+  '#yaziliya-hazirlik':'modal-yazili-567',
   // ── Blog yazıları
   '#blog-lgs-hazirlik':  'bmodal-lgs',
   '#blog-lgs':           'bmodal-lgs',
@@ -3090,48 +3363,116 @@ window.addEventListener('hashchange', openFromHash);
 }
 
 // ─── BLOG LİNK KOPYALA ───────────────────────────────────────────
-function copyBlogLink(slug) {
-  // Hangi domain'de olursa olsun o domain'i kullan
-  var url = window.location.origin + window.location.pathname + '#' + slug;
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(url).then(function() {
-      showCopyToast(url);
-    }).catch(function() {
-      fallbackCopy(url);
-    });
-  } else {
-    fallbackCopy(url);
-  }
+
+
+  catch(e) { alert('Link: ' + url); }
+  document.body.removeChild(el);
 }
 
-function fallbackCopy(url) {
+  t.innerHTML = msg || '✅ Link kopyalandı!';
+  t.style.display = 'flex';
+  setTimeout(function(){ t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)'; }, 10);
+  setTimeout(function(){ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(20px)'; setTimeout(function(){ t.style.display='none'; },350); }, 2800);
+}
+
+
+}
+
+function legacyCopy(url) {
   var el = document.createElement('textarea');
   el.value = url;
-  el.style.position = 'fixed';
-  el.style.opacity = '0';
+  el.setAttribute('readonly', '');
+  el.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
   document.body.appendChild(el);
-  el.focus();
   el.select();
-  try { document.execCommand('copy'); } catch(e) {}
+  el.setSelectionRange(0, 99999);
+  var ok = false;
+  try { ok = document.execCommand('copy'); } catch(e) {}
   document.body.removeChild(el);
-  showCopyToast(url);
+  if (ok) { showToast(url); } else { prompt('Linki kopyalayın:', url); }
 }
 
-function showCopyToast(url) {
+// Blog linki kopyala
+function copyBlogLink(slug) {
+  copyLink(SITE_URL + '/#' + slug);
+}
+
+// Paket linki kopyala
+function copyPaketLink(slug) {
+  copyLink(SITE_URL + '/#' + slug);
+}
+
+// Toast bildirimi
+function showToast(url) {
   var t = document.getElementById('copy-toast');
   if (!t) {
     t = document.createElement('div');
     t.id = 'copy-toast';
-    t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#1a3fad;color:#fff;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 8px 24px rgba(26,63,173,.35);display:flex;align-items:center;gap:8px;font-family:Nunito,sans-serif;';
+    t.style.cssText = [
+      'position:fixed', 'bottom:100px', 'left:50%',
+      'transform:translateX(-50%) translateY(16px)',
+      'background:linear-gradient(135deg,#1a3fad,#2554d4)',
+      'color:#fff', 'padding:11px 22px', 'border-radius:12px',
+      'font-size:13px', 'font-weight:600', 'z-index:99999',
+      'box-shadow:0 8px 28px rgba(26,63,173,.4)',
+      'display:none', 'align-items:center', 'gap:8px',
+      'font-family:Nunito,sans-serif', 'white-space:nowrap',
+      'transition:opacity .25s,transform .25s', 'opacity:0',
+      'pointer-events:none'
+    ].join(';');
     document.body.appendChild(t);
   }
-  t.innerHTML = '🔗 Link kopyalandı! <span style="opacity:.7;font-weight:400;font-size:11px;">' + url + '</span>';
-  t.style.opacity = '1';
+  t.textContent = '✅ Link kopyalandı!';
   t.style.display = 'flex';
-  setTimeout(function(){ t.style.opacity='0'; setTimeout(function(){ t.style.display='none'; }, 400); }, 3000);
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      t.style.opacity = '1';
+      t.style.transform = 'translateX(-50%) translateY(0)';
+    });
+  });
+  clearTimeout(t._timer);
+  t._timer = setTimeout(function() {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(16px)';
+    setTimeout(function() { t.style.display = 'none'; }, 300);
+  }, 2500);
 }
 
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Online VIP Dershane Kayıt",
+  "provider": {
+    "@type": "EducationalOrganization",
+    "name": "Online VIP Dershane",
+    "url": "https://onlinevipdershane.vercel.app"
+  },
+  "description": "LGS, YKS, KPSS ve okul desteği için online eğitime kayıt. Maksimum 10 kişilik VIP gruplar.",
+  "offers": [
+    {"@type":"Offer","name":"LGS Hazırlık","price":"96000","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#lgs"},
+    {"@type":"Offer","name":"YKS TYT-AYT Hazırlık","price":"104000","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#yks"},
+    {"@type":"Offer","name":"5-6-7. Sınıf VIP Paket","price":"88000","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#ortaokul"},
+    {"@type":"Offer","name":"9-10-11. Sınıf Programı","price":"96000","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#lise"},
+    {"@type":"Offer","name":"LGS Yaz Kampı","price":"24000","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#lgs-yaz"},
+    {"@type":"Offer","name":"Kitap Okuma Atölyesi","price":"12000","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#kitap"},
+    {"@type":"Offer","name":"5-6-7. Sınıf Yazılıya Hazırlık","price":"2500","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#yazili-567"},
+    {"@type":"Offer","name":"9-10-11. Sınıf Yazılıya Hazırlık","price":"3000","priceCurrency":"TRY","url":"https://onlinevipdershane.vercel.app/#yazili-91011"},
+    {"@type":"Offer","name":"VIP Start Paketi — Yıl Boyu Tam Entegre Başarı Sistemi","url":"https://onlinevipdershane.vercel.app/#start"}
+  ],
+  "areaServed": {"@type":"Country","name":"Türkiye"},
+  "serviceType": "Online Eğitim",
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceUrl": "https://onlinevipdershane.vercel.app",
+    "servicePhone": "+908503034014",
+    "availableLanguage": "Turkish"
+  }
+}
+</script>
+
 
 </body>
 </html>
