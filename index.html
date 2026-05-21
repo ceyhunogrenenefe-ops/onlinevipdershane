@@ -2413,7 +2413,11 @@ footer::before {
 <div id="bmodal-lgs" class="blog-modal-overlay" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="blog-modal">
     <div class="bm-hero">
-      <button class="bm-close" onclick="document.getElementById('bmodal-lgs').classList.remove('open')">✕</button>
+      <button class="bm-close" onclick="document.getElementById('bmodal-lgs').classList.remove('open');history.pushState(null,null,' ')">✕</button>
+      <div style="position:absolute;top:16px;right:56px;display:flex;gap:8px;">
+        <button onclick="copyBlogLink('blog-lgs-hazirlik')" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">🔗 Linki Kopyala</button>
+        <a href="https://wa.me/?text=Online%20VIP%20Dershane%20Blog%3A%20LGS%27de%20Y%C3%BCksek%20Net%20%C4%B0%C3%A7in%205%20Alt%C4%B1n%20Kural%20%E2%86%92%20onlinevipdershane.com%2F%23blog-lgs-hazirlik" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
+      </div>
       <div class="bm-cat">🏆 LGS Hazırlık</div>
       <h2 itemprop="headline">LGS'de Yüksek Net İçin 5 Altın Kural:<br>Hedef Liseye Nasıl Ulaşırsın?</h2>
       <div class="bm-meta">
@@ -2506,7 +2510,11 @@ footer::before {
 <div id="bmodal-online" class="blog-modal-overlay" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="blog-modal">
     <div class="bm-hero" style="background:linear-gradient(135deg,#050d1f 0%,#0a1e42 50%,#1a3fad 100%);">
-      <button class="bm-close" onclick="document.getElementById('bmodal-online').classList.remove('open')">✕</button>
+      <button class="bm-close" onclick="document.getElementById('bmodal-online').classList.remove('open');history.pushState(null,null,' ')">✕</button>
+      <div style="position:absolute;top:16px;right:56px;display:flex;gap:8px;">
+        <button onclick="copyBlogLink('blog-online-egitim')" style="background:rgba(255,255,255,.12);border:none;color:#fff;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:.2s;" onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">🔗 Linki Kopyala</button>
+        <a href="https://wa.me/?text=Online%20VIP%20Dershane%20Blog%3A%20Online%20E%C4%9Fitim%20Neden%20Daha%20Etkili%3F%20%E2%86%92%20onlinevipdershane.com%2F%23blog-online-egitim" target="_blank" style="background:rgba(37,211,102,.2);border:none;color:#34d399;padding:6px 12px;border-radius:8px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:5px;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.3)'" onmouseout="this.style.background='rgba(37,211,102,.2)'">💬 WhatsApp'ta Paylaş</a>
+      </div>
       <div class="bm-cat" style="background:rgba(37,84,212,.2);border-color:rgba(58,111,245,.35);color:#a5c0ff;">💻 Online Eğitim</div>
       <h2 itemprop="headline">Online Eğitim Neden Daha Etkili?<br>VIP Sistemin Klasik Dershaneden 7 Farkı</h2>
       <div class="bm-meta">
@@ -2978,20 +2986,26 @@ setTimeout(function(){
 // ─── URL HASH → MODAL AÇICI ───────────────────────────────────────────────
 // Paylaşılabilir linkler: site.com/#lgs, site.com/#yks vb.
 var hashModalMap = {
-  '#lgs':       'modal-lgs',
-  '#yks':       'modal-yks',
-  '#tyt':       'modal-yks',
-  '#ortaokul':  'modal-ortaokul',
-  '#ilkokul':   'modal-ilkokul',
-  '#lise':      'modal-lise91011',
-  '#9-10-11':   'modal-lise91011',
-  '#tyt10':     'modal-tyt10',
-  '#tyt11':     'modal-tyt11',
-  '#lgs-yaz':   'modal-lgs-yaz',
-  '#yaz-kampi': 'modal-lgs-yaz',
-  '#kitap':     'modal-kitap',
-  '#yaziliya':  'modal-tyt11',
-  '#kpss':      null, // henüz modal yok, iletişime yönlendir
+  // ── Program modalleri
+  '#lgs':              'modal-lgs',
+  '#yks':              'modal-yks',
+  '#tyt':              'modal-yks',
+  '#ortaokul':         'modal-ortaokul',
+  '#ilkokul':          'modal-ilkokul',
+  '#lise':             'modal-lise91011',
+  '#9-10-11':          'modal-lise91011',
+  '#tyt10':            'modal-tyt10',
+  '#tyt11':            'modal-tyt11',
+  '#lgs-yaz':          'modal-lgs-yaz',
+  '#yaz-kampi':        'modal-lgs-yaz',
+  '#kitap':            'modal-kitap',
+  '#yaziliya':         'modal-tyt11',
+  '#kpss':             null,
+  // ── Blog yazıları
+  '#blog-lgs-hazirlik':  'bmodal-lgs',
+  '#blog-lgs':           'bmodal-lgs',
+  '#blog-online-egitim': 'bmodal-online',
+  '#blog-online':        'bmodal-online',
 };
 
 function openFromHash() {
@@ -2999,21 +3013,27 @@ function openFromHash() {
   if (!hash) return;
   var modalId = hashModalMap[hash];
   if (modalId) {
-    // Kısa gecikme — sayfa yüklensin
     setTimeout(function() {
       var el = document.getElementById(modalId);
       if (el) {
         el.classList.add('open');
-        // İlgili bölüme scroll
-        var sec = document.getElementById('hizmetler');
+        // Blog modalı ise blog bölümüne, program ise hizmetlere scroll
+        var isBlog = modalId.indexOf('bmodal') === 0;
+        var scrollTarget = isBlog ? 'blog' : 'hizmetler';
+        var sec = document.getElementById(scrollTarget);
         if (sec) sec.scrollIntoView({ behavior: 'smooth' });
       }
-    }, 600);
+    }, 700);
   } else if (hash === '#kpss') {
     setTimeout(function() {
       var sec = document.getElementById('iletisim');
       if (sec) sec.scrollIntoView({ behavior: 'smooth' });
-    }, 600);
+    }, 700);
+  } else if (hash === '#blog') {
+    setTimeout(function() {
+      var sec = document.getElementById('blog');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    }, 500);
   }
 }
 
@@ -3068,6 +3088,39 @@ window.addEventListener('hashchange', openFromHash);
     }
   ]
 }
+
+// ─── BLOG LİNK KOPYALA ───────────────────────────────────────────
+function copyBlogLink(slug) {
+  var url = 'https://onlinevipdershane.com/#' + slug;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() {
+      showCopyToast(url);
+    });
+  } else {
+    var el = document.createElement('textarea');
+    el.value = url;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    showCopyToast(url);
+  }
+}
+
+function showCopyToast(url) {
+  var t = document.getElementById('copy-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'copy-toast';
+    t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#1a3fad;color:#fff;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 8px 24px rgba(26,63,173,.35);display:flex;align-items:center;gap:8px;font-family:Nunito,sans-serif;';
+    document.body.appendChild(t);
+  }
+  t.innerHTML = '🔗 Link kopyalandı! <span style="opacity:.7;font-weight:400;font-size:11px;">' + url + '</span>';
+  t.style.opacity = '1';
+  t.style.display = 'flex';
+  setTimeout(function(){ t.style.opacity='0'; setTimeout(function(){ t.style.display='none'; }, 400); }, 3000);
+}
+
 </script>
 
 </body>
