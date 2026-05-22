@@ -1759,7 +1759,7 @@ footer::before {
 .basari { background: var(--navy); padding: 96px 5%; }
 .basari-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-top: 48px;
 }
@@ -1808,8 +1808,8 @@ footer::before {
   color: rgba(255,255,255,.75);
   font-family: "Nunito", sans-serif;
 }
-@media(max-width:960px){
-  .basari-grid { grid-template-columns: 1fr 1fr; }
+@media(max-width:1100px){
+  .basari-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media(max-width:640px){
   .basari-grid { grid-template-columns: 1fr; max-width: 340px; margin: 48px auto 0; }
@@ -2181,6 +2181,25 @@ function showToast() {
         <div class="video-label">
           <span class="video-label-dot"></span>
           <p>Öğrenci Başarı Hikayesi</p>
+        </div>
+      </div>
+
+      <!-- Instagram Reel — Türkiye 50.sü -->
+      <div class="video-card" style="border-color:rgba(232,35,42,.2);">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.instagram.com/reel/DNqTNabi-Cr/embed/"
+            title="Online VIP Dershane — Türkiye 500.sü Başarı Hikayesi"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            scrolling="no"
+            frameborder="0">
+          </iframe>
+        </div>
+        <div class="video-label">
+          <span class="video-label-dot" style="background:#e1306c;"></span>
+          <p>🏆 Türkiye 500.sü — Instagram</p>
         </div>
       </div>
     </div>
