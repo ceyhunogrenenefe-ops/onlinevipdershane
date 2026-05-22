@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2470509843418190');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2470509843418190&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Online VIP Dershane | LGS YKS KPSS Hazırlık — Türkiye'nin En Büyük YZ Destekli Online Dershanesi</title>
@@ -3984,6 +4001,41 @@ function showToast(url) {
     }
   ]
 }
+
+// ─── META PİXEL DÖNÜŞÜM EVENTLERİ ──────────────────────────────
+// WhatsApp butonuna tıklama
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(el) {
+  el.addEventListener('click', function() {
+    if(typeof fbq !== 'undefined') {
+      fbq('track', 'Contact', {content_name: 'WhatsApp'});
+    }
+  });
+});
+
+// Eğitimi Al / Kayıt butonları
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.add-btn, .btn-primary, .nav-cta, .checkout-btn, .dbtn-red');
+  if (!btn) return;
+  if (typeof fbq === 'undefined') return;
+
+  if (btn.classList.contains('add-btn')) {
+    fbq('track', 'AddToCart');
+  } else if (btn.classList.contains('checkout-btn') || btn.id === 'co-btn') {
+    fbq('track', 'InitiateCheckout');
+  } else if (btn.classList.contains('nav-cta')) {
+    fbq('track', 'Lead', {content_name: 'Hemen Kayit Ol'});
+  } else if (btn.classList.contains('dbtn-red') && btn.textContent.indexOf('Kayıt') > -1) {
+    fbq('track', 'Lead', {content_name: btn.textContent.trim()});
+  }
+});
+
+// İletişim formu gönderimi
+document.addEventListener('submit', function(e) {
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'Lead', {content_name: 'İletisim Formu'});
+  }
+});
+
 </script>
 
 
