@@ -1754,6 +1754,67 @@ footer::before {
 }
 .bm-btn-wa:hover { background:rgba(255,255,255,.18); }
 
+
+/* ─── BAŞARILARIMIZ ─── */
+.basari { background: var(--navy); padding: 96px 5%; }
+.basari-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.video-card {
+  border-radius: var(--rl);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+  transition: .3s;
+  position: relative;
+}
+.video-card:hover {
+  border-color: rgba(58,111,245,.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(5,13,31,.5);
+}
+.video-wrap {
+  position: relative;
+  width: 100%;
+  /* Shorts için 9:16 oranı */
+  padding-bottom: 177.78%;
+  height: 0;
+  overflow: hidden;
+}
+.video-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+.video-label {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.video-label-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.video-label p {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.75);
+  font-family: "Nunito", sans-serif;
+}
+@media(max-width:960px){
+  .basari-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:640px){
+  .basari-grid { grid-template-columns: 1fr; max-width: 340px; margin: 48px auto 0; }
+}
+
 </style>
 <script>
 // ═══════════════════════════════════════════════════
@@ -2062,6 +2123,73 @@ function showToast() {
           <span class="sbadge" style="color:var(--green)">✅ KDV Dahil</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BAŞARILARIMIZ -->
+<section class="basari" id="basarilarimiz" aria-label="Öğrenci Başarıları ve Yorumları">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-label" style="color:rgba(255,255,255,.45);">Başarılarımız</div>
+      <h2 class="sec-title" style="color:#fff;">Öğrencilerimiz <span style="color:var(--gold);">Konuşuyor</span></h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.5);">Gerçek öğrencilerimizin gerçek başarı hikayeleri. Online VIP Dershane farkını onların ağzından dinleyin.</p>
+    </div>
+    <div class="basari-grid">
+      <div class="video-card">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/G-YHNGfVao4"
+            title="Online VIP Dershane Öğrenci Başarı Hikayesi 1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-label">
+          <span class="video-label-dot"></span>
+          <p>Öğrenci Başarı Hikayesi</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/XtL6aKxe0gA"
+            title="Online VIP Dershane Öğrenci Başarı Hikayesi 2"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-label">
+          <span class="video-label-dot"></span>
+          <p>Öğrenci Başarı Hikayesi</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/VPcpPwsPRF4"
+            title="Online VIP Dershane Öğrenci Başarı Hikayesi 3"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-label">
+          <span class="video-label-dot"></span>
+          <p>Öğrenci Başarı Hikayesi</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="https://www.youtube.com/@OnlineVipDershane" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,0,0,.12);border:1px solid rgba(255,0,0,.25);color:#ff6b6b;padding:11px 24px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:.2s;font-family:'Nunito',sans-serif;"
+         onmouseover="this.style.background='rgba(255,0,0,.22)';this.style.borderColor='rgba(255,0,0,.45)'"
+         onmouseout="this.style.background='rgba(255,0,0,.12)';this.style.borderColor='rgba(255,0,0,.25)'">
+        ▶ YouTube Kanalımıza Abone Olun
+      </a>
     </div>
   </div>
 </section>
@@ -2403,7 +2531,9 @@ function showToast() {
     <div class="foot-bottom">
       <span>© 2025 Online VIP Dershane | Tüm fiyatlar KDV dahildir.</span>
       <div class="social-links">
-        <a class="sl" href="#">📷</a><a class="sl" href="#">▶</a><a class="sl" href="#">💬</a><a class="sl" href="#">♪</a>
+        <a class="sl" href="https://www.instagram.com/onlinevipdershane/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+        <a class="sl" href="https://www.youtube.com/@OnlineVipDershane" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+        <a class="sl" href="https://wa.me/908503034014" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
       </div>
     </div>
   </div>
@@ -3797,6 +3927,52 @@ function showToast(url) {
 }
 
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Online VIP Dershane Öğrenci Başarı Videoları",
+  "description": "Online VIP Dershane öğrencilerinin gerçek başarı hikayeleri ve yorumları",
+  "url": "https://onlinevipdershane.vercel.app/#basarilarimiz",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Online VIP Dershane Öğrenci Başarı Hikayesi 1",
+        "url": "https://www.youtube.com/shorts/G-YHNGfVao4",
+        "embedUrl": "https://www.youtube.com/embed/G-YHNGfVao4",
+        "publisher": {"@type": "Organization", "name": "Online VIP Dershane"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Online VIP Dershane Öğrenci Başarı Hikayesi 2",
+        "url": "https://www.youtube.com/shorts/XtL6aKxe0gA",
+        "embedUrl": "https://www.youtube.com/embed/XtL6aKxe0gA",
+        "publisher": {"@type": "Organization", "name": "Online VIP Dershane"}
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Online VIP Dershane Öğrenci Başarı Hikayesi 3",
+        "url": "https://www.youtube.com/shorts/VPcpPwsPRF4",
+        "embedUrl": "https://www.youtube.com/embed/VPcpPwsPRF4",
+        "publisher": {"@type": "Organization", "name": "Online VIP Dershane"}
+      }
+    }
+  ]
+}
+</script>
+
 
 
 </body>
