@@ -2630,7 +2630,7 @@ function showToast() {
         <form id="ik-basvuru-form"
               action="https://formspree.io/f/mpqnjdwd"
               method="POST"
-              enctype="multipart/form-data">
+              >
 
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="ik-fg">
@@ -2685,12 +2685,11 @@ function showToast() {
           </div>
 
           <div class="ik-fg">
-            <label>CV Yükleyin (PDF veya Word) *</label>
-            <label class="ik-file-label">
-              <input type="file" name="cv" accept=".pdf,.doc,.docx" required onchange="document.getElementById('file-name').textContent = this.files[0] ? this.files[0].name : 'Dosya seçilmedi'">
-              <span>📎</span>
-              <span id="file-name">Dosya seçmek için tıklayın</span>
-            </label>
+            <label>CV Linki (Google Drive) — İsteğe Bağlı</label>
+            <input type="url" name="cv_link" placeholder="https://drive.google.com/file/d/...">
+            <span style="font-size:11.5px;color:var(--muted);margin-top:4px;display:block;">
+              💡 CV'nizi Google Drive'a yükleyip <strong>"Bağlantısı olan herkes görüntüleyebilir"</strong> yapın, linki buraya yapıştırın.
+            </span>
           </div>
 
           <!-- Formspree gizli alanlar -->
