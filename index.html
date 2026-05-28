@@ -19,6 +19,15 @@ src="https://www.facebook.com/tr?id=2470509843418190&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+<!-- Google Ads Conversion -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17235832134"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17235832134');
+</script>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JXCYDJE25T"></script>
 <script>
@@ -1940,6 +1949,177 @@ footer::before {
   .ik-form { position: static; }
 }
 
+
+/* ─── MAIL TOPLAMA ─── */
+.mail-strip {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 50%, #1a3fad 100%);
+  padding: 56px 5%;
+  position: relative;
+  overflow: hidden;
+}
+.mail-strip::before {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(37,84,212,.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mail-strip-in {
+  max-width: 700px; margin: 0 auto;
+  text-align: center; position: relative; z-index: 1;
+}
+.mail-strip-in h3 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800; color: #fff;
+  margin-bottom: 8px; letter-spacing: -.02em;
+}
+.mail-strip-in p {
+  font-size: 14px; color: rgba(255,255,255,.6);
+  margin-bottom: 24px; line-height: 1.7;
+}
+.mail-form-row {
+  display: flex; gap: 10px;
+  max-width: 520px; margin: 0 auto;
+}
+.mail-form-row input {
+  flex: 1; padding: 13px 16px;
+  border: 1.5px solid rgba(255,255,255,.2);
+  border-radius: 11px;
+  background: rgba(255,255,255,.08);
+  color: #fff; font-size: 14px;
+  outline: none; transition: .2s;
+  font-family: inherit;
+}
+.mail-form-row input::placeholder { color: rgba(255,255,255,.4); }
+.mail-form-row input:focus {
+  border-color: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.12);
+}
+.mail-form-row button {
+  padding: 13px 24px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 11px;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: .25s;
+  white-space: nowrap; font-family: inherit;
+  flex-shrink: 0;
+}
+.mail-form-row button:hover { background: #c8191f; transform: translateY(-1px); }
+.mail-form-row button:disabled { background: #888; cursor: not-allowed; transform: none; }
+.mail-success-msg {
+  display: none;
+  color: #34d399; font-size: 14px; font-weight: 600;
+  margin-top: 14px;
+}
+.mail-note {
+  font-size: 11.5px; color: rgba(255,255,255,.35);
+  margin-top: 12px;
+}
+@media(max-width:480px){
+  .mail-form-row { flex-direction: column; }
+}
+
+
+
+
+/* ─── ÇIKIŞ POPUP ─── */
+.exit-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(5,13,31,.88);
+  z-index: 10000;
+  align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.exit-overlay.open { display: flex; }
+.exit-modal {
+  background: #111827;
+  border: 1px solid rgba(232,35,42,.3);
+  border-radius: 24px;
+  padding: 0;
+  max-width: 520px; width: 100%;
+  overflow: hidden;
+  animation: exitPop .35s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+}
+@keyframes exitPop {
+  from { opacity:0; transform:scale(.85) translateY(20px); }
+  to   { opacity:1; transform:none; }
+}
+.exit-hero {
+  background: linear-gradient(135deg, #0a0e1a 0%, #0f2244 60%, #1a3fad 100%);
+  padding: 36px 36px 28px;
+  text-align: center; position: relative;
+}
+.exit-emoji { font-size: 48px; margin-bottom: 12px; display: block; }
+.exit-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(20px,3vw,26px); font-weight: 800;
+  color: #fff; line-height: 1.15; margin-bottom: 8px;
+}
+.exit-title span { color: #f5c542; }
+.exit-sub { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.6; }
+.exit-body { padding: 24px 32px 32px; }
+.exit-offer {
+  background: rgba(232,35,42,.08);
+  border: 1px solid rgba(232,35,42,.2);
+  border-radius: 14px; padding: 16px 20px;
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.exit-offer-icon { font-size: 32px; flex-shrink: 0; }
+.exit-offer-text h4 {
+  font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 3px;
+}
+.exit-offer-text p { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.5; }
+.exit-features {
+  display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;
+}
+.exit-feat {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,.75);
+}
+.exit-feat::before {
+  content: '✓';
+  color: #68d391; font-weight: 800; flex-shrink: 0;
+}
+.exit-btns { display: flex; flex-direction: column; gap: 10px; }
+.exit-btn-main {
+  width: 100%; padding: 14px;
+  background: linear-gradient(135deg, #e8232a, #c8191f);
+  color: #fff; border: none; border-radius: 12px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: 'Nunito', sans-serif; transition: .2s;
+}
+.exit-btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,35,42,.35); }
+.exit-btn-wa {
+  width: 100%; padding: 12px;
+  background: rgba(37,211,102,.12);
+  border: 1px solid rgba(37,211,102,.3);
+  color: #34d399; border-radius: 12px;
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: 'Nunito', sans-serif; transition: .2s;
+  text-decoration: none; display: flex;
+  align-items: center; justify-content: center; gap: 8px;
+}
+.exit-btn-wa:hover { background: rgba(37,211,102,.2); }
+.exit-dismiss {
+  text-align: center; margin-top: 12px;
+  font-size: 12px; color: rgba(255,255,255,.3);
+  cursor: pointer; transition: .2s;
+}
+.exit-dismiss:hover { color: rgba(255,255,255,.6); }
+.exit-close {
+  position: absolute; top: 14px; right: 16px;
+  background: rgba(255,255,255,.1); border: none;
+  color: #fff; width: 30px; height: 30px;
+  border-radius: 50%; font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.exit-close:hover { background: rgba(255,255,255,.2); }
+
 </style>
 <script>
 // ═══════════════════════════════════════════════════
@@ -2028,6 +2208,45 @@ function showToast() {
 <body>
 
 <!-- NAV -->
+
+
+<!-- ÇIKIŞ POPUP -->
+<div class="exit-overlay" id="exitPopup">
+  <div class="exit-modal">
+    <div class="exit-hero">
+      <button class="exit-close" onclick="closeExit()">✕</button>
+      <span class="exit-emoji">🎓</span>
+      <div class="exit-title">Bekle! <span>Ücretsiz Tanışma Dersi</span> Fırsatını Kaçırma!</div>
+      <p class="exit-sub">Online VIP Dershane'yi denemeden gitme. İlk ders tamamen ücretsiz!</p>
+    </div>
+    <div class="exit-body">
+      <div class="exit-offer">
+        <div class="exit-offer-icon">🎁</div>
+        <div class="exit-offer-text">
+          <h4>Ücretsiz Tanışma Dersi + Seviye Testi</h4>
+          <p>Herhangi bir ödeme yapmadan deneyin. Beğenmezseniz hiçbir yükümlülük yok.</p>
+        </div>
+      </div>
+      <div class="exit-features">
+        <div class="exit-feat">Maksimum 10 kişilik VIP grup garantisi</div>
+        <div class="exit-feat">7/24 soru çözüm desteği</div>
+        <div class="exit-feat">Haftalık birebir koçluk</div>
+        <div class="exit-feat">Ders kayıtlarına sınırsız erişim</div>
+      </div>
+      <div class="exit-btns">
+        <button class="exit-btn-main" onclick="closeExit();document.getElementById('iletisim').scrollIntoView({behavior:'smooth'});fbq('track','Lead',{content_name:'Cikis_Popup'});gtag('event','exit_popup_click',{event_category:'conversion'});">
+          📋 Ücretsiz Tanışma Dersini Al
+        </button>
+        <a href="https://wa.me/908503034014?text=Merhaba%2C%20%C3%BCcretsiz%20tan%C4%B1%C5%9Fma%20dersi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" class="exit-btn-wa"
+           onclick="closeExit();fbq('track','Contact',{content_name:'Cikis_WA'});">
+          💬 WhatsApp'tan Bilgi Al
+        </a>
+      </div>
+      <div class="exit-dismiss" onclick="closeExit()">Hayır, fırsatı kaçırmak istiyorum</div>
+    </div>
+  </div>
+</div>
+
 <nav id="main-nav">
   <div class="nav-in">
     <a href="#" class="logo">
@@ -2359,6 +2578,24 @@ function showToast() {
   </div>
 </section>
 
+
+<!-- MAİL TOPLAMA -->
+<div class="mail-strip" id="bulten">
+  <div class="mail-strip-in">
+    <h3>📬 Ücretsiz Eğitim İpuçları ve Kampanyalar</h3>
+    <p>LGS, YKS, sınav taktikleri ve erken kayıt kampanyalarından ilk siz haberdar olun. Haftada en fazla 1 mail, spam yok.</p>
+    <form id="mail-form" onsubmit="mailKayit(event)">
+      <div class="mail-form-row">
+        <input type="email" id="mail-email" placeholder="E-posta adresiniz" required>
+        <button type="submit" id="mail-btn">Abone Ol →</button>
+      </div>
+    </form>
+    <div class="mail-success-msg" id="mail-success">
+      ✅ Harika! Sizi listeye ekledik. Teşekkürler!
+    </div>
+    <p class="mail-note">Gizliliğinize saygı duyuyoruz. İstediğiniz zaman abonelikten çıkabilirsiniz.</p>
+  </div>
+</div>
 
 <!-- BLOG -->
 <section class="blog" id="blog" aria-label="Blog ve Eğitim Makaleleri">
@@ -2733,6 +2970,7 @@ function showToast() {
     </div>
   </div>
 </section>
+
 
 
 <!-- TRUST STRIP -->
@@ -4322,6 +4560,108 @@ if (ikForm) {
     });
   });
 }
+
+
+// ─── MAİL KAYIT — RESEND ──────────────────────────────────────────
+async function mailKayit(e) {
+  e.preventDefault();
+  var email = document.getElementById('mail-email').value;
+  var btn   = document.getElementById('mail-btn');
+  var succ  = document.getElementById('mail-success');
+
+  if (!email) return;
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Ekleniyor...';
+
+  try {
+    // Vercel API route üzerinden gönder
+    var res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    });
+
+    if (res.ok) {
+      document.getElementById('mail-form').style.display = 'none';
+      succ.style.display = 'block';
+      // GA4
+      if (typeof gtag !== 'undefined') gtag('event', 'sign_up', {method: 'email_newsletter'});
+      // Meta Pixel
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead', {content_name: 'Bulten Aboneligi'});
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Abone Ol →';
+      alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+    }
+  } catch(err) {
+    // Vercel function yoksa doğrudan kaydet
+    btn.disabled = false;
+    btn.textContent = 'Abone Ol →';
+    // Fallback: WhatsApp'a yönlendir
+    window.open('https://wa.me/908503034014?text=' + encodeURIComponent('Merhaba, ' + email + ' adresimle bültene abone olmak istiyorum.'), '_blank');
+  }
+}
+
+
+
+
+// ─── ÇIKIŞ POPUP ───────────────────────────────────────────
+var exitShown = false;
+function closeExit() {
+  document.getElementById('exitPopup').classList.remove('open');
+  sessionStorage.setItem('exit_shown','1');
+}
+
+// Mouse sayfadan çıkınca göster
+document.addEventListener('mouseleave', function(e) {
+  if (e.clientY <= 5 && !exitShown && !sessionStorage.getItem('exit_shown')) {
+    exitShown = true;
+    setTimeout(function() {
+      document.getElementById('exitPopup').classList.add('open');
+      // Analytics
+      if (typeof fbq !== 'undefined') fbq('track', 'ViewContent', {content_name: 'Cikis_Popup_Gosterildi'});
+      if (typeof gtag !== 'undefined') gtag('event', 'exit_popup_shown', {event_category: 'engagement'});
+    }, 300);
+  }
+});
+
+// Mobilde 30 sn sonra göster (mouse yok)
+if ('ontouchstart' in window) {
+  setTimeout(function() {
+    if (!exitShown && !sessionStorage.getItem('exit_shown')) {
+      exitShown = true;
+      document.getElementById('exitPopup').classList.add('open');
+    }
+  }, 30000);
+}
+
+// ESC ile kapat
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeExit();
+});
+
+// Overlay dışına tıklayınca kapat
+document.getElementById('exitPopup').addEventListener('click', function(e) {
+  if (e.target === this) closeExit();
+});
+
+// Google Ads dönüşüm takibi
+function gAdsConversion(label) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17235832134/' + (label || 'genel'),
+    });
+  }
+}
+
+// Checkout butonuna Google Ads dönüşümü ekle
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.checkout-btn, #co-btn');
+  if (btn) gAdsConversion('kayit_tamamla');
+  var ikBtn = e.target.closest('#ik-submit-btn');
+  if (ikBtn) gAdsConversion('ogretmen_basvuru');
+});
 
 </script>
 
