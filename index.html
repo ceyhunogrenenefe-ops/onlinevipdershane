@@ -2169,6 +2169,18 @@ function copyPaketLink(slug) {
   copyLink(SITE_URL + '/#' + slug);
 }
 
+// ─── YASAL SAYFA LİNK KOPYALA ─────────────────────────────
+function copyYasalLink(slug, isim) {
+  var url = SITE_URL + '/#' + slug;
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url)
+      .then(function() { showToast(); })
+      .catch(function() { fallbackCopy(url); });
+  } else {
+    fallbackCopy(url);
+  }
+}
+
 // ─── BLOG KARTI GEÇİŞ SİSTEMİ ───────────────────────────────
 var blogExpanded = false;
 function toggleBlogCards() {
@@ -3078,7 +3090,11 @@ function showToast() {
     <div class="dsec"><h4>5. İptal Koşulları</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">• <strong>Hizmet başlamadan önce yapılan iptal:</strong> Tam iade yapılır, herhangi bir kesinti uygulanmaz.<br>• <strong>Hizmet başladıktan sonra yapılan iptal:</strong> Dijital eğitim hizmetinin niteliği gereği, hizmet ifasına başlandıktan sonra kısmi iade yapılmamaktadır. Cayma hakkı süresi ve koşulları 2. ve 3. maddeler kapsamında değerlendirilir.<br>• <strong>Şirketten kaynaklanan kesintiler:</strong> Teknik arıza veya şirketimizden kaynaklanan hizmet kesintilerinde telafi dersi sağlanır; telafi mümkün değilse iade değerlendirmesi yapılır.<br>• <strong>Mücbir sebep halleri:</strong> Doğal afet, salgın hastalık gibi mücbir sebep hallerinde taraflarca mutabık kalınan koşullarda iptal ve iade gerçekleştirilir.</p></div>
     <div class="dsec"><h4>6. Uyuşmazlık Çözümü</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">İade veya iptal talebinizin karşılanmaması ya da anlaşmazlık durumunda aşağıdaki yollara başvurabilirsiniz:<br><br>• <strong>Batman Tüketici Hakem Heyeti</strong> (3.000 TL'ye kadar olan uyuşmazlıklarda)<br>• <strong>Tüketici Mahkemeleri</strong> (daha yüksek tutarlı uyuşmazlıklarda)<br>• <strong>e-Devlet Tüketici Şikayet Portalı:</strong> www.turkiye.gov.tr</p></div>
   </div>
-  <div class="dmodal-footer"><button class="dbtn-red" id="close-iade-btn">Anladım, Kapat</button></div>
+  <div class="dmodal-footer" style="display:flex;align-items:center;gap:10px;">
+      <button class="dbtn-red" id="close-iade-btn">Anladım, Kapat</button>
+      <button onclick="copyYasalLink('iptal','İade ve İptal Politikası')" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.75);transition:.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Linki Kopyala</button>
+      <a href="https://wa.me/?text=İade%20ve%20İptal%20Politikası%3A%20" onclick="this.href='https://wa.me/?text='+encodeURIComponent('İade ve İptal Politikası: '+SITE_URL+'/#iptal')" target="_blank" rel="noopener" style="flex-shrink:0;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:#34d399;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.22)'" onmouseout="this.style.background='rgba(37,211,102,.12)'">💬 Paylaş</a>
+    </div>
 </div></div>
 
 <div id="modal-hakkimizda" class="dmodal-overlay"><div class="dmodal">
@@ -3102,7 +3118,11 @@ function showToast() {
     <div class="dsec"><h4>6. Veri Sahibinin Hakları (KVKK Madde 11)</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">KVKK kapsamında aşağıdaki haklarınızı kullanabilirsiniz:<br><br>• Kişisel verilerinizin işlenip işlenmediğini öğrenme<br>• İşlenmişse buna ilişkin bilgi talep etme<br>• İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme<br>• Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme<br>• Eksik veya yanlış işlenmişse düzeltilmesini isteme<br>• Silinmesini veya yok edilmesini isteme<br>• Düzeltme/silme işlemlerinin aktarılan üçüncü kişilere bildirilmesini isteme<br>• İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi nedeniyle aleyhinize bir sonuç ortaya çıkmasına itiraz etme<br>• Kanuna aykırı işleme nedeniyle zararın giderilmesini talep etme<br><br>Başvurularınızı info@onlinevipdershane.com adresine yazılı olarak iletebilirsiniz. Talepler 30 gün içinde sonuçlandırılır.</p></div>
     <div class="dsec"><h4>7. Çerez Politikası</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">Sitemiz; oturum yönetimi, kullanıcı deneyimi ve analitik amaçlarla çerezler kullanmaktadır. Zorunlu çerezler hizmetin işletimi için gereklidir; analitik ve pazarlama çerezleri için açık rızanız alınmaktadır. Tarayıcı ayarlarınızdan çerezleri yönetebilirsiniz.</p></div>
   </div>
-  <div class="dmodal-footer"><button class="dbtn-red" id="close-gizlilik-btn">Anladım, Kapat</button></div>
+  <div class="dmodal-footer" style="display:flex;align-items:center;gap:10px;">
+      <button class="dbtn-red" id="close-gizlilik-btn">Anladım, Kapat</button>
+      <button onclick="copyYasalLink('gizlilik','Gizlilik Politikası')" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.75);transition:.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Linki Kopyala</button>
+      <a href="https://wa.me/?text=Gizlilik%20Politikası%3A%20" onclick="this.href='https://wa.me/?text='+encodeURIComponent('Gizlilik Politikası: '+SITE_URL+'/#gizlilik')" target="_blank" rel="noopener" style="flex-shrink:0;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:#34d399;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.22)'" onmouseout="this.style.background='rgba(37,211,102,.12)'">💬 Paylaş</a>
+    </div>
 </div></div>
 
 <div id="modal-satis" class="dmodal-overlay"><div class="dmodal">
@@ -3116,7 +3136,11 @@ function showToast() {
     <div class="dsec"><h4>6. Uygulanacak Hukuk ve Yetki</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">Bu sözleşmeye Türkiye Cumhuriyeti hukuku uygulanır. Uyuşmazlıklarda Batman Tüketici Hakem Heyeti ve Batman Tüketici Mahkemeleri yetkilidir.</p></div>
     <div class="dsec"><h4>7. Yürürlük</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">Alıcı, sipariş onaylama ekranında "Siparişi Onayla" veya "Ödemeye Geç" butonuna tıklayarak işbu sözleşmeyi okuduğunu, anladığını ve tüm koşullarını kabul ettiğini beyan eder.</p></div>
   </div>
-  <div class="dmodal-footer"><button class="dbtn-red" id="close-satis-btn">Okudum, Kabul Ediyorum</button></div>
+  <div class="dmodal-footer" style="display:flex;align-items:center;gap:10px;">
+      <button class="dbtn-red" id="close-satis-btn">Okudum, Kabul Ediyorum</button>
+      <button onclick="copyYasalLink('satis','Mesafeli Satış Sözleşmesi')" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.75);transition:.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Linki Kopyala</button>
+      <a href="#" onclick="this.href='https://wa.me/?text='+encodeURIComponent('Mesafeli Satış Sözleşmesi: '+SITE_URL+'/#satis');return true;" target="_blank" rel="noopener" style="flex-shrink:0;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:#34d399;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.22)'" onmouseout="this.style.background='rgba(37,211,102,.12)'">💬 Paylaş</a>
+    </div>
 </div></div>
 
 <div id="modal-kullanici" class="dmodal-overlay"><div class="dmodal">
@@ -3130,7 +3154,11 @@ function showToast() {
     <div class="dsec"><h4>6. Sözleşmenin Feshi</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">• Kullanıcı dilediği zaman hesabını kapatabilir; bu durumda iade politikası geçerlidir.<br>• Şirket; kullanım koşullarının ihlali, uygunsuz davranış veya ödeme yapılmaması halinde hesabı askıya alma ya da sonlandırma hakkına sahiptir.<br>• Fesih halinde kullanıcının erişimi derhal sonlandırılır; kullanılmamış hizmet bedeli iade politikası çerçevesinde değerlendirilir.</p></div>
     <div class="dsec"><h4>7. Değişiklikler</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">Şirket, bu sözleşmeyi önceden bildirimde bulunmak kaydıyla güncelleme hakkını saklı tutar. Güncellemeler Platform'da yayımlandığı tarihten itibaren geçerli olur. Kullanıcının Platform'u kullanmaya devam etmesi, güncellenmiş koşulları kabul ettiği anlamına gelir.</p></div>
   </div>
-  <div class="dmodal-footer"><button class="dbtn-red" id="close-kullanici-btn">Okudum, Kabul Ediyorum</button></div>
+  <div class="dmodal-footer" style="display:flex;align-items:center;gap:10px;">
+      <button class="dbtn-red" id="close-kullanici-btn">Okudum, Kabul Ediyorum</button>
+      <button onclick="copyYasalLink('kullanici','Kullanıcı Sözleşmesi')" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.75);transition:.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Linki Kopyala</button>
+      <a href="#" onclick="this.href='https://wa.me/?text='+encodeURIComponent('Kullanıcı Sözleşmesi: '+SITE_URL+'/#kullanici');return true;" target="_blank" rel="noopener" style="flex-shrink:0;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:#34d399;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.22)'" onmouseout="this.style.background='rgba(37,211,102,.12)'">💬 Paylaş</a>
+    </div>
 </div></div>
 
 <div id="modal-cerez" class="dmodal-overlay"><div class="dmodal">
@@ -3143,7 +3171,11 @@ function showToast() {
     <div class="dsec"><h4>5. Üçüncü Taraf Çerezleri</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">Sitemiz aşağıdaki üçüncü taraf hizmetlerini kullanabilir:<br><br>• <strong>Google Analytics:</strong> Ziyaretçi analizi<br>• <strong>PayTR:</strong> Güvenli ödeme işlemleri<br>• <strong>Kommo (AmoCRM):</strong> İletişim formu ve CRM entegrasyonu<br><br>Bu hizmetlerin çerez politikaları ilgili şirketlerin web sitelerinde yayımlanmaktadır.</p></div>
     <div class="dsec"><h4>6. İletişim</h4><p style="font-size:13px;color:var(--muted);line-height:1.85">Çerez politikamıza ilişkin sorularınız için: info@onlinevipdershane.com</p></div>
   </div>
-  <div class="dmodal-footer"><button class="dbtn-red" id="close-cerez-btn">Anladım, Kapat</button></div>
+  <div class="dmodal-footer" style="display:flex;align-items:center;gap:10px;">
+      <button class="dbtn-red" id="close-cerez-btn">Anladım, Kapat</button>
+      <button onclick="copyYasalLink('cerez','Çerez Politikası')" style="flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:rgba(255,255,255,.75);transition:.2s;font-family:inherit;" onmouseover="this.style.background='rgba(255,255,255,.18)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">🔗 Linki Kopyala</button>
+      <a href="https://wa.me/?text=Çerez%20Politikası%3A%20" onclick="this.href='https://wa.me/?text='+encodeURIComponent('Çerez Politikası: '+SITE_URL+'/#cerez')" target="_blank" rel="noopener" style="flex-shrink:0;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;color:#34d399;text-decoration:none;transition:.2s;" onmouseover="this.style.background='rgba(37,211,102,.22)'" onmouseout="this.style.background='rgba(37,211,102,.12)'">💬 Paylaş</a>
+    </div>
 </div></div>
 
 <!-- Service Detail Modals -->
@@ -4247,6 +4279,14 @@ var hashModalMap = {
   '#yazili-91011':     'modal-yazili-91011',
   '#start':            'modal-start',
   '#yaziliya-hazirlik':'modal-yazili-567',
+  // ── Yasal sayfalar
+  '#gizlilik':         'modal-gizlilik',
+  '#satis':            'modal-satis',
+  '#mesafeli-satis':   'modal-satis',
+  '#kullanici':        'modal-kullanici',
+  '#cerez':            'modal-cerez',
+  '#iade':             'modal-iade',
+  '#iptal':            'modal-iade',
   // ── Blog yazıları
   '#blog-lgs-hazirlik':  'bmodal-lgs',
   '#blog-lgs':           'bmodal-lgs',
@@ -4267,8 +4307,9 @@ function openFromHash() {
       if (el) {
         el.classList.add('open');
         // Blog modalı ise blog bölümüne, program ise hizmetlere scroll
-        var isBlog = modalId.indexOf('bmodal') === 0;
-        var scrollTarget = isBlog ? 'blog' : 'hizmetler';
+        var isBlog  = modalId.indexOf('bmodal') === 0;
+        var isYasal = ['modal-gizlilik','modal-satis','modal-kullanici','modal-cerez','modal-iade'].indexOf(modalId) > -1;
+        var scrollTarget = isBlog ? 'blog' : isYasal ? 'iletisim' : 'hizmetler';
         var sec = document.getElementById(scrollTarget);
         if (sec) sec.scrollIntoView({ behavior: 'smooth' });
       }
